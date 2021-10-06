@@ -43,7 +43,6 @@
                                                                 RepeatBehavior="Forever" AutoReverse="true"/>
                                                         </Storyboard>
                                                     </BeginStoryboard>
-
                                                 </DataTrigger.EnterActions>
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding seviye}" Value="MIDDLE">
