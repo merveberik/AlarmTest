@@ -127,7 +127,6 @@ namespace AlarmTest
             }
             if (changeStatus1 == false & changeStatus2 == false & changeStatus3 == false)
             {
-                counter = 0;
                 Alarm_Popup.IsOpen = false;
             }
         }
