@@ -13,23 +13,23 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Height="200" Width="182" Grid.Column="0" Margin="84,330,34,84">
+        <Grid Width="182" Grid.Column="0" Margin="114,344,4,13">
             <Popup Placement="Center" x:Name="Alarm_Popup" Margin="31,28,-31,-28" AllowsTransparency="True" PopupAnimation="Scroll">
                 <ScrollViewer  ScrollViewer.HorizontalScrollBarVisibility="Hidden"  Name="grd2">
-                    <DataGrid   FontSize="8" Height="130" Width="230" AutoGenerateColumns="False" x:Name="grd"  HeadersVisibility="Column">
+                    <DataGrid   FontSize="14" Height="200" Width="300" AutoGenerateColumns="False" x:Name="grd"  HeadersVisibility="Column">
                         <!--Font Color / Style of Column Headings-->
                         <DataGrid.Resources>
                             <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
                                 <Setter Property="Background" Value="LightSkyBlue"/>
                                 <Setter Property="FontWeight" Value="SemiBold"/>
-                                <!--<Setter Property="BorderThickness" Value="0,0,1,2"/> 
-                                <Setter Property="BorderBrush" Value="Black"/>-->
+                                <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                                <Setter Property="BorderBrush" Value="Black"/>
 
                             </Style>
                         </DataGrid.Resources>
                         <!--Column Header Text & Bindings-->
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Alarm" Binding="{Binding alarm}" Width="70">
+                            <DataGridTextColumn Header="Alarm" Binding="{Binding alarm}" Width="80">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
@@ -55,7 +55,7 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Seviye" Binding="{Binding seviye}" Width="70"/>
+                            <DataGridTextColumn Header="Seviye" Binding="{Binding seviye}" Width="80"/>
                             <DataGridTextColumn Header="Saat" Binding="{Binding saat}" Width="*"/>
                         </DataGrid.Columns>
 
@@ -66,17 +66,17 @@
         </Grid>
         <Border Grid.Column="0">
             <StackPanel>
-                <Button x:Name="button1" Background="#FF00A2FF" Content="LEVEL-1" Click="Start_Click1" Width="120" Height="120"/>
-                <Button x:Name="button4" Background="#FF00A2FF" Content="LEVEL-2" Click="Start_Click2" Width="120" Height="120"/>
-                <Button x:Name="button5"  Background="#FF00A2FF" Content="LEVEL-3" Click="Start_Click3" Width="120" Height="120"/>
+                <Button x:Name="button1" Background="#FF00A2FF" Content="LEVEL-1" Click="Start_Click1" Width="120" Height="110"/>
+                <Button x:Name="button4" Background="#FF00A2FF" Content="LEVEL-2" Click="Start_Click2" Width="120" Height="110"/>
+                <Button x:Name="button5"  Background="#FF00A2FF" Content="LEVEL-3" Click="Start_Click3" Width="120" Height="110"/>
             </StackPanel>
 
         </Border>
         <Border Grid.Column="1">
             <StackPanel>
-                <Button x:Name="button3" Background="#FF00A2FF" Content="STOP-1" Click="Stop_Click1" Width="120" Height="120"/>
-                <Button x:Name="button6" Background="#FF00A2FF" Content="STOP-2" Click="Stop_Click2" Width="120" Height="120"/>
-                <Button x:Name="button7" Background="#FF00A2FF" Content="STOP-3" Click="Stop_Click3" Width="120" Height="120"/>
+                <Button x:Name="button3" Background="#FF00A2FF" Content="STOP-1" Click="Stop_Click1" Width="120" Height="110"/>
+                <Button x:Name="button6" Background="#FF00A2FF" Content="STOP-2" Click="Stop_Click2" Width="120" Height="110"/>
+                <Button x:Name="button7" Background="#FF00A2FF" Content="STOP-3" Click="Stop_Click3" Width="120" Height="110"/>
             </StackPanel>
 
         </Border>

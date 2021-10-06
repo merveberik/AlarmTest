@@ -23,6 +23,9 @@ namespace AlarmTest
         static int counter = 0;
         Alarm alarm = new Alarm();
         bool changeStatus1, changeStatus2, changeStatus3;
+        Alarms alarmDeneme = new Alarms();
+        Alarms alarmDeneme2 = new Alarms();
+        Alarms alarmDeneme3 = new Alarms();
 
         public MainWindow()
         {
@@ -36,6 +39,9 @@ namespace AlarmTest
             timer.Start();
 
 
+            alarmDeneme.alarm = "Problem - 1";
+            alarmDeneme.seviye = "HIGH";
+            alarmDeneme.saat = DateTime.Now;
         }
 
         public class Alarms
@@ -61,10 +67,7 @@ namespace AlarmTest
             changeStatus1 = true;
             Alarm_Popup.IsOpen = true;
 
-            Alarms alarmDeneme = new Alarms();
-            alarmDeneme.alarm = "Problem - 1";
-            alarmDeneme.seviye = "HIGH";
-            alarmDeneme.saat = DateTime.Now;
+
 
             grd.Items.Add(alarmDeneme);
 
@@ -74,11 +77,9 @@ namespace AlarmTest
         {
             changeStatus2 = true;
             Alarm_Popup.IsOpen = true;
-            Alarms alarmDeneme2 = new Alarms();
             alarmDeneme2.alarm = "Problem - 2";
             alarmDeneme2.seviye = "MIDDLE";
             alarmDeneme2.saat = DateTime.Now;
-
             grd.Items.Add(alarmDeneme2);
         }
 
@@ -86,11 +87,9 @@ namespace AlarmTest
         {
             changeStatus3 = true;
             Alarm_Popup.IsOpen = true;
-            Alarms alarmDeneme3 = new Alarms();
             alarmDeneme3.alarm = "Problem - 3";
             alarmDeneme3.seviye = "LOW";
             alarmDeneme3.saat = DateTime.Now;
-
             grd.Items.Add(alarmDeneme3);
         }
 
@@ -111,13 +110,26 @@ namespace AlarmTest
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
+            if (changeStatus1 == false)
+            {
+                counter = 0;
+                grd.Items.Remove(alarmDeneme);
+            }
+            if (changeStatus2 == false)
+            {
+                counter = 0;
+                grd.Items.Remove(alarmDeneme2);
+            }
+            if (changeStatus3 == false)
+            {
+                counter = 0;
+                grd.Items.Remove(alarmDeneme3);
+            }
             if (changeStatus1 == false & changeStatus2 == false & changeStatus3 == false)
             {
                 counter = 0;
                 Alarm_Popup.IsOpen = false;
-                //alarm.Close();
             }
-
         }
     }
 }
