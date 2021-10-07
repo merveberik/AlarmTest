@@ -1,0 +1,597 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <Style x:Key="ContentControlStyle1" TargetType="{x:Type ContentControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ContentControl}">
+                    <Grid>
+                        <TextBlock Name="Highlight" Foreground="#66FFFFFF" Text="{TemplateBinding Content}" />
+                        <TextBlock Name="Shadow" Margin="0,4,0,0" Foreground="#FF2F4251" Text="{TemplateBinding Content}"/>
+                        <ContentPresenter Margin="0,2,0,0"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="GlassButton" TargetType="Button">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Template">
+            <!--xml ile yazıyormuş gibi bir kısım olacak-->
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Canvas x:Name="gd" >
+                        <!--<Border x:Name="back" CornerRadius="10" Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">-->
+                        <Border x:Name="back" CornerRadius="10"  Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                            <ContentPresenter x:Name="cp"  Content="{TemplateBinding Content}"  HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"/>
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                                    <!--<GradientStop Color="LightCyan" Offset="0.0" />
+                                    <GradientStop Color="#FF29AED9" Offset="0.5" />-->
+                                    <GradientStop Color="#FF4F5D5D" Offset="0.1 " />
+                                    <GradientStop Color="#FF868C91" Offset="0.5" />
+
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </Canvas>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="true">
+                            <!--style animation, EnterActions activity state, ExitActions inactive state -->
+                            <Trigger.EnterActions>
+                                <!--BeginStoryboard trigger action, which starts Storyboard -->
+                                <BeginStoryboard>
+                                    <!--Storyboard A container timeline that provides object and property determination information for sub-animations -->
+                                    <Storyboard>
+                                        <!--Double attribute value is animated DoubleAnimation-->
+                                        <DoubleAnimation From="0" To="2" Duration="0:0:0.1" Storyboard.TargetName="back" Storyboard.TargetProperty="(Canvas.Top)" />
+                                        <DoubleAnimation From="0" To="1" Duration="0:0:0.1" Storyboard.TargetName="back" Storyboard.TargetProperty="(Canvas.Left)" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation From="2" To="0" Duration="0:0:0.1" Storyboard.TargetName="back" Storyboard.TargetProperty="(Canvas.Top)" />
+                                        <DoubleAnimation From="1" To="0" Duration="0:0:0.1" Storyboard.TargetName="back" Storyboard.TargetProperty="(Canvas.Left)" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground"  Value="#FF631717" />
+                            <Setter TargetName="back" Property="BorderBrush" Value="white"/>
+                            <Setter TargetName="back" Property="Background" Value="#FF666E6E"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <system:String x:Key="Otomatikte_manuel_calismaz">Otomatikte bu işlemi yapamazsınız!!!</system:String>
+
+    <!--Alarmlar-->
+
+
+    <system:String x:Key="1">S1 - CVY1 Termik Hata</system:String>
+    <system:String x:Key="2">S1 - CVY1 Hız sensör Hata</system:String>
+    <system:String x:Key="3">S2 - CVY2 Termik Hata</system:String>
+    <system:String x:Key="4">S2 - CVY2 Hız sensör Hata</system:String>
+    <system:String x:Key="5">S3 - CVY3 Termik Hata</system:String>
+    <system:String x:Key="6">>S3 - CVY3 Hız sensör Hata</system:String>
+    <system:String x:Key="7">>S4 - CVY4 Termik Hata</system:String>
+    <system:String x:Key="8">>S4 - CVY4 Hız sensör Hata</system:String>
+    <system:String x:Key="9">>S6 - CVY5 Termik Hata</system:String>
+    <system:String x:Key="10">S6 - CVY5 Hız sensör Hata</system:String>
+    <system:String x:Key="11">S5 - SC1 Termik Hata</system:String>
+    <system:String x:Key="12">S7 - CVY6 Termik Hata</system:String>
+    <system:String x:Key="13">S7 - CVY6 Frekans İnverter Hata</system:String>
+    <system:String x:Key="14">Faz koruma Rölesi Hatası</system:String>
+    <system:String x:Key="15">Acil Stop</system:String>
+    <system:String x:Key="16">Haberleşme Hatası</system:String>
+    <system:String x:Key="17">S1 - CVY1 Bakım Zamanı Hatası</system:String>
+    <system:String x:Key="18">S2 - CVY2 Bakım Zamanı Hatası</system:String>
+    <system:String x:Key="19">S3 - CVY3 Bakım Zamanı Hatası</system:String>
+    <system:String x:Key="20">S4 - CVY4 Bakım Zamanı Hatası</system:String>
+    <system:String x:Key="21">S6 - CVY5 Bakım Zamanı Hatası</system:String>
+    <system:String x:Key="22">S5 - SC1 Bakım Zamanı Hatası</system:String>
+    <system:String x:Key="23">S7 - CVY6 Bakım Zamanı Hatası</system:String>
+
+
+
+    <!--Alarmlar-->
+    <system:String x:Key="Makina_kodu">LEVY MOBİL KIRMA ELEME TESİSİ 1</system:String>
+    <system:String x:Key="Makina_kodu2">LEVY MOBİL KIRMA ELEME TESİSİ 2</system:String>
+
+    <system:String x:Key="Olay">Olay</system:String>
+    <system:String x:Key="Olay_Report">Olay Raporu</system:String>
+    <system:String x:Key="Kirici_Akim_Ayar">Kırıcı Akım Ayar</system:String>
+
+    <system:String x:Key="Alarm_Id">Alarm Id</system:String>
+
+    <system:String x:Key="Yetkiniz_yok">Bu işlemi yapmaya yetkiniz yoktur.</system:String>
+
+    <system:String x:Key="Log_report">Log Raporu</system:String>
+
+    <system:String x:Key="Degistirme">Değiştirme</system:String>
+    <system:String x:Key="Izleme">İzleme</system:String>
+
+    <system:String x:Key="Iptal">İptal</system:String>
+    <system:String x:Key="Sirasi">Sırası</system:String>
+    <system:String x:Key="makina_adi">Makina Adı</system:String>
+
+
+    <system:String x:Key="Motor_calısma_siras">Motor Çalışma Sırası</system:String>
+
+    <system:String x:Key="bunker3_dolu_start_set">Bunker Dolu start geçikme</system:String>
+    <system:String x:Key="bunker_dolu_gecikme_set">Bunker Dolu stop geçikme</system:String>
+    <system:String x:Key="bunker_dolu_set">Bunker Dolu Yüzde Set</system:String>
+    <system:String x:Key="bunker_bos_set">Bunker Boş Yüzde Set</system:String>
+
+
+
+    <system:String x:Key="MWI_notready">MWI Hazır Değil!!</system:String>
+    <system:String x:Key="TC1000_notready">TC1000 Hazır Değil!!</system:String>
+
+    <system:String x:Key="gercek_deger">Gerçek Değer %</system:String>
+    <system:String x:Key="ham_deger">Ham Değer</system:String>
+
+    <system:String x:Key="bunker3_dolu">Bunker 3 Poz 27 Dolu</system:String>
+    <system:String x:Key="bunker2_dolu">Bunker 2 Poz 17 Dolu</system:String>
+    <system:String x:Key="bunker1_dolu">Bunker 1 Poz 10 Dolu</system:String>
+
+    <system:String x:Key="radyal4_sol">Radyal 4 Sol Geribesleme Alarmı</system:String>
+    <system:String x:Key="radyal4_sag">Radyal 4 Sağ Geribesleme Alarmı</system:String>
+    <system:String x:Key="radyal4_termik">Radyal 4 Termik Arızası</system:String>
+
+    <system:String x:Key="radyal3_sol">Radyal 3 Sol Geribesleme Alarmı</system:String>
+    <system:String x:Key="radyal3_sag">Radyal 3 Sağ Geribesleme Alarmı</system:String>
+    <system:String x:Key="radyal3_termik">Radyal 3 Termik Arızası</system:String>
+
+    <system:String x:Key="radyal2_sol">Radyal 2 Sol Geribesleme Alarmı</system:String>
+    <system:String x:Key="radyal2_sag">Radyal 2 Sağ Geribesleme Alarmı</system:String>
+    <system:String x:Key="radyal2_termik">Radyal 2 Termik Arızası</system:String>
+
+    <system:String x:Key="radyal1_sol">Radyal 1 Sol Geribesleme Alarmı</system:String>
+    <system:String x:Key="radyal1_sag">Radyal 1 Sağ Geribesleme Alarmı</system:String>
+    <system:String x:Key="radyal1_termik">Radyal 1 Termik Arızası</system:String>
+
+    <system:String x:Key="buzzer_stop">Buzzer Durdur</system:String>
+
+
+    <system:String x:Key="remote">Uzak Mode</system:String>
+
+
+    <system:String x:Key="hammadde_kullanim_raporu">Hammadde Kullanım Raporu</system:String>
+    <system:String x:Key="genel_siren_sure">Genel Siren Süresi</system:String>
+    <system:String x:Key="lokal_siren_sure">Lokal Siren Süresi</system:String>
+
+    <system:String x:Key="calisma_modu3">Tam Otomatik</system:String>
+    <system:String x:Key="calisma_modu2">Yarı Otomatik</system:String>
+    <system:String x:Key="calisma_modu1">MANUEL</system:String>
+    <system:String x:Key="ilk_tarih_buyuk">İlk tarih, son tarihten büyük olamaz.!!</system:String>
+    <system:String x:Key="cal_suresi_min_2">Not: Çalışma ve durma sürelerini minimum 2 saniye girebilirsiniz..!!</system:String>
+    <system:String x:Key="uygulama_zaten_acık">Uygulama Zaten Çalışıyor.!!</system:String>
+    <system:String x:Key="restore__">Restore yapmak için proğramı kapatıp açınız. Tekrar açınız. Tekrar açıldığında backup dosya ismini giriniz.!!</system:String>
+    <system:String x:Key="backup__">Backup yapmak için proğramı kapatıp açınız. Tekrar açıldığında backup dosya ismini giriniz.!!</system:String>
+    <system:String x:Key="restore_">Restore işlemini başarıyla yaptınız.</system:String>
+    <system:String x:Key="backup_">Backup işlemini başarıyla yaptınız.</system:String>
+    <system:String x:Key="alarm_raporu">Alarm Raporu</system:String>
+    <system:String x:Key="Hammadde_giris_raporu">Hammadde Giriş Raporu</system:String>
+    <system:String x:Key="Uretim_raporu">Üretim  Raporu</system:String>
+    <system:String x:Key="urun">Ürün</system:String>
+    <system:String x:Key="son_yuz_kayıt">Not:  En fazla 100 kayıt gösterilmiştir.</system:String>
+    <system:String x:Key="Admini_sifre_degistirme">Adminin şifresini değiştiremezsin.</system:String>
+    <system:String x:Key="Admini_silememe">Admini Silemezsiniz.</system:String>
+    <system:String x:Key="Admini_guncellememe">Admini Güncelleyemezsiniz.</system:String>
+
+    <system:String x:Key="Kullanıcı_Ayarları">Kullanıcı Ayarları</system:String>
+    <system:String x:Key="Akim_start_on_delay">Akım Start Gecikmesi</system:String>
+    <system:String x:Key="Akim_stop_off_delay">Akım Stop gecikmesi</system:String>
+    <system:String x:Key="Akim_stop_set">Akım Stop Set</system:String>
+    <system:String x:Key="buyuk_deger_sorunu">100'den büyük değer giremezsin.</system:String>
+    <system:String x:Key="Faz_hatasi">Faz Hatası</system:String>
+    <system:String x:Key="buzzer_sus">Buzzer Sus</system:String>
+    <system:String x:Key="bant_kaydi_var_mi">Bant Kaydi Switch</system:String>
+    <system:String x:Key="calisma_saati_ve_bakim_per">Çalışma Saatleri ve Bakım Periyotları</system:String>
+    <system:String x:Key="Kalan_sure">Kalan Sure</system:String>
+    <system:String x:Key="Bakim_peryodu">Bakim Süresi</system:String>
+    <system:String x:Key="calisma_saati">Çalışma Saati</system:String>
+
+
+    <system:String x:Key="Bunker_dolu">Ara Bunker Dolu</system:String>
+    <system:String x:Key="Silo_2_Dolu">Silo 2 Dolu</system:String>
+    <system:String x:Key="Silo_1_Dolu">Silo 1 Dolu</system:String>
+
+
+
+    <system:String x:Key="MJ_monitoring_ariza">MJ Geribesleme Arızası</system:String>
+    <system:String x:Key="MJ_termik_ariza">MJ Termik Arızası</system:String>
+    <system:String x:Key="MJ2_monitoring_ariza">MJ2 Geribesleme Arızası</system:String>
+    <system:String x:Key="MJ2_termik_ariza">MJ2 Termik Arızası</system:String>
+
+
+
+
+    <system:String x:Key="TC1000_Soft_ariza">TC1000 Soft Starter Arızası</system:String>
+    <system:String x:Key="TC1000_monitoring_ariza">TC1000 Geribesleme Arızası</system:String>
+    <system:String x:Key="TC1000_termik_ariza">TC1000 Termik Arızası</system:String>
+
+    <system:String x:Key="MVI_soft_ariza">MVI Soft Starter Arızası</system:String>
+    <system:String x:Key="MVI_monitoring_ariza">MVI Geribesleme Arızası</system:String>
+    <system:String x:Key="MVI_termik_ariza">MVI Termik Arızası</system:String>
+
+    <system:String x:Key="GF_inverter_ariza">GF Inverter Arızası</system:String>
+    <system:String x:Key="GF_monitoring_ariza">GF Geribesleme Arızası</system:String>
+    <system:String x:Key="GF_termik_ariza">GF Termik Arızası</system:String>
+
+
+    <system:String x:Key="GF2_inverter_ariza">GF2 Inverter Arızası</system:String>
+    <system:String x:Key="GF2_monitoring_ariza">GF2 Geribesleme Arızası</system:String>
+    <system:String x:Key="GF2_termik_ariza">GF2 Termik Arızası</system:String>
+
+
+    <system:String x:Key="PF2_inverter_ariza">PF2 Inverter Arızası</system:String>
+    <system:String x:Key="PF2_monitoring_ariza">PF2 Geribesleme Arızası</system:String>
+    <system:String x:Key="PF2_termik_ariza">PF2 Termik Arızası</system:String>
+
+
+
+    <system:String x:Key="BF_monitoring_ariza">BF Geribesleme Arızası</system:String>
+    <system:String x:Key="BF_inverter_ariza">BF İnverter Arızası</system:String>
+    <system:String x:Key="BF_termik_ariza">BF Termik Arızası</system:String>
+
+
+    <system:String x:Key="IS1_monitoring_ariza">IS1 Geribesleme Arızası</system:String>
+
+    <system:String x:Key="IS1_termik_ariza">IS1 Termik Arızası</system:String>
+
+    <system:String x:Key="IWS2_monitoring_ariza">IWS2 Geribesleme Arızası</system:String>
+    <system:String x:Key="IWS2_termik_ariza">IWS2 Termik Arızası</system:String>
+
+
+    <system:String x:Key="IWS1_monitoring_ariza">IWS1 Geribesleme Arızası</system:String>
+    <system:String x:Key="IWS1_termik_ariza">IWS1 Termik Arızası</system:String>
+
+    <system:String x:Key="VS2_monitoring_ariza">VS2 Geribesleme Arızası</system:String>
+    <system:String x:Key="VS2_termik_ariza">VS2 Termik Arızası</system:String>
+
+    <system:String x:Key="MD2_monitoring_ariza">MD2 Geribesleme Arızası</system:String>
+    <system:String x:Key="MD2_termik_ariza">MD2 Termik Arızası</system:String>
+
+    <system:String x:Key="SP2_V_monitoring_ariza">SP2_V Geribesleme Arızası</system:String>
+    <system:String x:Key="SP2_V_termik_ariza">SP2_V Termik Arızası</system:String>
+    <system:String x:Key="SP2_P_suYok">SP2_P Su Yok</system:String>
+    <system:String x:Key="SP2_P_monitoring_ariza">SP2_P Geribesleme Arızası</system:String>
+    <system:String x:Key="SP2_P_termik_ariza">SP2_P Termik Arızası</system:String>
+
+    <system:String x:Key="SP1_V_monitoring_ariza">SP1_V Geribesleme Arızası</system:String>
+    <system:String x:Key="SP1_V_termik_ariza">SP1_V Termik Arızası</system:String>
+    <system:String x:Key="SP1_P_suYok">SP1_P Su Yok</system:String>
+    <system:String x:Key="SP1_P_monitoring_ariza">SP1_P Geribesleme Arızası</system:String>
+    <system:String x:Key="SP1_P_termik_ariza">SP1_P Termik Arızası</system:String>
+
+
+    <system:String x:Key="CV20_metal_ariza">CVY20 Metal Dedektör Alarm</system:String>
+    <system:String x:Key="CV20_ipli_ariza">CVY20 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV20_devir_bekci_ariza">CVY20 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV20_monitoring_ariza">CVY20 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV20_bant_kaydi_ariza">CVY20 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV20_termik_ariza">CVY20 Termik Arızası</system:String>
+
+    <system:String x:Key="CV19_ipli_ariza">CVY19 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV19_devir_bekci_ariza">CVY19 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV19_monitoring_ariza">CVY19 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV19_bant_kaydi_ariza">CVY19 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV19_termik_ariza">CVY19 Termik Arızası</system:String>
+
+    <system:String x:Key="MD1_monitoring_ariza">MD1 Geribesleme Arızası</system:String>
+    <system:String x:Key="MD1_termik_ariza">MD1 Termik Arızası</system:String>
+
+    <system:String x:Key="CV18_ipli_ariza">CVY18 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV18_devir_bekci_ariza">CVY18 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV18_monitoring_ariza">CVY18 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV18_bant_kaydi_ariza">CVY18 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV18_termik_ariza">CVY18 Termik Arızası</system:String>
+
+    <system:String x:Key="CV17_ipli_ariza">CVY17 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV17_devir_bekci_ariza">CVY17 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV17_monitoring_ariza">CVY17 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV17_bant_kaydi_ariza">CVY17 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV17_termik_ariza">CVY17 Termik Arızası</system:String>
+
+    <system:String x:Key="OBM_termik_ariza">OBM Termik Arızası</system:String>
+    <system:String x:Key="OBM_monitoring_ariza">OBM Geribesleme Arızası</system:String>
+
+    <system:String x:Key="CV16_ipli_ariza">CVY16 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV16_devir_bekci_ariza">CVY16 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV16_monitoring_ariza">CVY16 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV16_bant_kaydi_ariza">CVY16 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV16_termik_ariza">CVY16 Termik Arızası</system:String>
+
+    <system:String x:Key="CV15_ipli_ariza">CVY15 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV15_devir_bekci_ariza">CVY15 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV15_monitoring_ariza">CVY15 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV15_bant_kaydi_ariza">CVY15 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV15_termik_ariza">CVY15 Termik Arızası</system:String>
+
+
+
+    <system:String x:Key="CDM_termik_ariza">CDM Termik Arızası</system:String>
+    <system:String x:Key="CDM_monitoring_ariza">CDM Geribesleme Arızası</system:String>
+    <system:String x:Key="CDM_inverter_ariza">CDM Inverter Arızası</system:String>
+
+    <system:String x:Key="CV14_ipli_ariza">CVY14 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV14_devir_bekci_ariza">CVY14 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV14_monitoring_ariza">CVY14 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV14_bant_kaydi_ariza">CVY14 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV14_termik_ariza">CVY14 Termik Arızası</system:String>
+
+    <system:String x:Key="CV13_ipli_ariza">CVY13 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV13_devir_bekci_ariza">CVY13 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV13_monitoring_ariza">CVY13 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV13_bant_kaydi_ariza">CVY13 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV13_termik_ariza">CVY13 Termik Arızası</system:String>
+
+    <system:String x:Key="CV12_ipli_ariza">CVY12 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV12_devir_bekci_ariza">CVY12 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV12_monitoring_ariza">CVY12 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV12_bant_kaydi_ariza">CVY12 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV12_termik_ariza">CVY12 Termik Arızası</system:String>
+
+    <system:String x:Key="CV11_ipli_ariza">CVY11 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV11_devir_bekci_ariza">CVY11 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV11_monitoring_ariza">CVY11 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV11_bant_kaydi_ariza">CVY11 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV11_termik_ariza">CVY11 Termik Arızası</system:String>
+
+    <system:String x:Key="CV10_ipli_ariza">CVY10 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV10_devir_bekci_ariza">CVY10 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV10_monitoring_ariza">CVY10 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV10_bant_kaydi_ariza">CVY10 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV10_termik_ariza">CVY10 Termik Arızası</system:String>
+
+
+    <system:String x:Key="PF1_inverter_ariza">PF1 Inverter Arıza</system:String>
+    <system:String x:Key="PF1_monitoring_ariza">PF1 Geribesleme Arızası</system:String>
+    <system:String x:Key="PF1_termik_ariza">PF1 Termik Arızası</system:String>
+
+    <system:String x:Key="CV9_ipli_ariza">CVY9 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV9_devir_bekci_ariza">CVY9 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV9_monitoring_ariza">CVY9 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV9_bant_kaydi_ariza">CVY9 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV9_termik_ariza">CVY9 Termik Arızası</system:String>
+
+    <system:String x:Key="CV8_ipli_ariza">CVY8 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV8_devir_bekci_ariza">CVY8 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV8_monitoring_ariza">CVY8 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV8_bant_kaydi_ariza">CVY8 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV8_termik_ariza">CVY8 Termik Arızası</system:String>
+
+
+    <system:String x:Key="MSP_mixer_ariza">MSP Mikser Arıza</system:String>
+    <system:String x:Key="MSP_inverter_ariza">MSP Inverter Arıza</system:String>
+    <system:String x:Key="MSP_monitoring_ariza">MSP Geribesleme Arızası</system:String>
+    <system:String x:Key="MSP_termik_ariza">MSP Termik Arızası</system:String>
+
+    <system:String x:Key="CV7_metal_ariza">CVY7 Metal Dedektör Alarm</system:String>
+    <system:String x:Key="CV7_ipli_ariza">CVY7 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV7_devir_bekci_ariza">CVY7 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV7_monitoring_ariza">CVY7 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV7_bant_kaydi_ariza">CVY7 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV7_termik_ariza">CVY7 Termik Arızası</system:String>
+
+    <system:String x:Key="VS1_monitoring_ariza">VS1 Geribesleme Arızası</system:String>
+    <system:String x:Key="VS1_termik_ariza">VS1 Termik Arızası</system:String>
+
+    <system:String x:Key="CV6_metal_ariza">CVY6 Metal Dedektör Alarm</system:String>
+    <system:String x:Key="CV6_ipli_ariza">CVY6 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV6_devir_bekci_ariza">CVY6 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV6_monitoring_ariza">CVY6 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV6_bant_kaydi_ariza">CVY6 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV6_termik_ariza">CVY6 Termik Arızası</system:String>
+
+    <system:String x:Key="CV5_ipli_ariza">CVY5 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV5_devir_bekci_ariza">CVY5 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV5_monitoring_ariza">CVY5 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV5_bant_kaydi_ariza">CVY5 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV5_termik_ariza">CVY5 Termik Arızası</system:String>
+
+
+    <system:String x:Key="CV4_ipli_ariza">CVY4 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV4_devir_bekci_ariza">CVY4 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV4_monitoring_ariza">CVY4 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV4_bant_kaydi_ariza">CVY4 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV4_termik_ariza">CVY4 Termik Arızası</system:String>
+
+
+    <system:String x:Key="CV3_ipli_ariza">CVY3 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV3_devir_bekci_ariza">CVY3 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV3_monitoring_ariza">CVY3 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV3_bant_kaydi_ariza">CVY3 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV3_termik_ariza">CVY3 Termik Arızası</system:String>
+
+    <system:String x:Key="CV2_inverter_alarm">CV2 İnverter Arızası</system:String>
+    <system:String x:Key="CV2_ipli_ariza">CVY2 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV2_devir_bekci_ariza">CVY2 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV2_monitoring_ariza">CVY2 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV2_bant_kaydi_ariza">CVY2 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV2_termik_ariza">CVY2 Termik Arızası</system:String>
+
+    <system:String x:Key="CV1_ipli_ariza">CVY1 İpli Emniyet Arızası</system:String>
+    <system:String x:Key="CV1_devir_bekci_ariza">CVY1 Devir Bekçisi Arızası</system:String>
+    <system:String x:Key="CV1_monitoring_ariza">CVY1 Geribesleme Arızası</system:String>
+    <system:String x:Key="CV1_bant_kaydi_ariza">CVY1 Bant Kaydı Arızası</system:String>
+    <system:String x:Key="CV1_termik_ariza">CVY1 Termik Arızası</system:String>
+
+    <system:String x:Key="besleyici_bant2">Besleyici Bant 2</system:String>
+    <system:String x:Key="besleyici_bant1">Besleyici Bant 1</system:String>
+    <system:String x:Key="bant_kaydi">Bant Kaydı Switch</system:String>
+    <system:String x:Key="besleme_banti2">Besleme Bantı 2</system:String>
+    <system:String x:Key="besleme_banti1">Besleme Bantı 1</system:String>
+    <system:String x:Key="calisma_sure">Çalışma Süresi</system:String>
+    <system:String x:Key="durma_sure">Durma Süresi</system:String>
+    <system:String x:Key="Encoder">Enkoder</system:String>
+    <system:String x:Key="Kırıcı_Akimlari_Raporu">Kırıcı Akimlari Raporu</system:String>
+    <system:String x:Key="uretilen">Üretilen</system:String>
+    <system:String x:Key="hammedde_tanimlama">Hammadde Tanımlama</system:String>
+    <system:String x:Key="konik2">Konik Kırıcı 2</system:String>
+    <system:String x:Key="konik1">Konik Kırıcı 1</system:String>
+    <system:String x:Key="ceneli">Çeneli Kırıcı</system:String>
+    <system:String x:Key="Besleyici">Besleyici</system:String>
+    <system:String x:Key="Korna">KORNA</system:String>
+    <system:String x:Key="scada">Scada</system:String>
+    <system:String x:Key="devir_bekcisi_ayar">Devir Bekçisi</system:String>
+    <system:String x:Key="Meka_kırma_eleme">Meka Kırma Eleme Tesisi</system:String>
+    <system:String x:Key="Urun_Stok">Urün Stok</system:String>
+    <system:String x:Key="Urun_sevkiyat">Urün Sevkiyat</system:String>
+    <system:String x:Key="Hammadde_stok_takibi">Hammadde Stok Takibi</system:String>
+    <system:String x:Key="Sureler">Süreler</system:String>
+    <system:String x:Key="Username">Planlama</system:String>
+    <system:String x:Key="Kayıtlar">Kayıtlar</system:String>
+    <system:String x:Key="Stok">Stok</system:String>
+    <system:String x:Key="Raporlar">Raporlar</system:String>
+    <system:String x:Key="Ayarlar">Ayarlar</system:String>
+    <system:String x:Key="Alarmlar">Alarmlar</system:String>
+    <system:String x:Key="Dil">Dil</system:String>
+    <system:String x:Key="Seviye">Seviye</system:String>
+    <system:String x:Key="Çıkış">Çıkış</system:String>
+    <system:String x:Key="Silo_Tanimlama">Silo Tanımlama</system:String>
+    <system:String x:Key="Stok_Takibi">Stok Takibi</system:String>
+    <system:String x:Key="Hammadde_Girisi">Hammadde Girişi</system:String>
+    <system:String x:Key="Üretim_Raporu">Üretim Raporu</system:String>
+    <system:String x:Key="Eski_İrsaliyeler">Eski İrsaliyeler</system:String>
+    <system:String x:Key="Stok_Raporu">Stok Raporu</system:String>
+    <system:String x:Key="Toplam_Üretim">Toplam Üretim Raporu</system:String>
+    <system:String x:Key="Backup_ve_Restore">Backup ve Restore</system:String>
+    <system:String x:Key="irsaliye">İrsaliye No</system:String>
+    <system:String x:Key="Kurulum_Ayarları">Kurulum Ayarları</system:String>
+    <system:String x:Key="Türkçe">Türkçe</system:String>
+    <system:String x:Key="İngilizce">İngilizce</system:String>
+    <system:String x:Key="Arapça">Arapça</system:String>
+    <system:String x:Key="Fransizca">Fransızca</system:String>
+    <system:String x:Key="Alinacak">Alınacak</system:String>
+    <system:String x:Key="Alinan">Alınan</system:String>
+    <system:String x:Key="Hata">Hata</system:String>
+    <system:String x:Key="Biten_Uretimler">Biten Üretimler</system:String>
+    <system:String x:Key="Musteri_Adresi">Müsteri Adresi</system:String>
+    <system:String x:Key="Santiye_Adresi">Şantiye Adresi</system:String>
+    <system:String x:Key="Kullanici">Kullanıcı</system:String>
+    <system:String x:Key="Toplam_Uretim">Toplam Üretim</system:String>
+    <system:String x:Key="Sil">Sil</system:String>
+    <system:String x:Key="Sira_No">Sıra No</system:String>
+    <system:String x:Key="Adi">Adı</system:String>
+    <system:String x:Key="Yetkili">Yetkili</system:String>
+    <system:String x:Key="Tel">Tel</system:String>
+    <system:String x:Key="Fax">Fax</system:String>
+    <system:String x:Key="Adres">Adres</system:String>
+    <system:String x:Key="Il">İl</system:String>
+    <system:String x:Key="Ilce">İlçe</system:String>
+    <system:String x:Key="Bolge">Bölge</system:String>
+    <system:String x:Key="Vergi_Da">Vergi Dairesi</system:String>
+    <system:String x:Key="Vergi_No">Vergi No</system:String>
+    <system:String x:Key="Uzaklik">Uzaklık</system:String>
+    <system:String x:Key="Plaka">Plaka</system:String>
+    <system:String x:Key="Kapasite">Kapasite</system:String>
+    <system:String x:Key="Tipi">Tipi</system:String>
+    <system:String x:Key="Sicil_No">Sicil No</system:String>
+    <system:String x:Key="Genel_Toplam">Genel Toplam</system:String>
+    <system:String x:Key="Durum">Durum</system:String>
+    <system:String x:Key="Tarih">Tarih</system:String>
+    <system:String x:Key="Aciklama">Açıklama</system:String>
+    <system:String x:Key="Parametreler">Parametreler</system:String>
+    <system:String x:Key="Klepe">Klepe</system:String>
+    <system:String x:Key="Silo">Silo</system:String>
+    <system:String x:Key="Silo1">Silo 1</system:String>
+    <system:String x:Key="Silo2">Silo 2</system:String>
+    <system:String x:Key="Silo3">Silo 3</system:String>
+    <system:String x:Key="Silo4">Silo 4</system:String>
+    <system:String x:Key="Silo5">Silo 5</system:String>
+    <system:String x:Key="Silo6">Silo 6</system:String>
+    <system:String x:Key="Malzeme">Hammadde</system:String>
+    <system:String x:Key="Giren">Giren</system:String>
+    <system:String x:Key="Cikan">Çıkan</system:String>
+    <system:String x:Key="Miktar">Miktar</system:String>
+    <system:String x:Key="Saat">Saat</system:String>
+    <system:String x:Key="Kalibrasyon">Kalibrasyon</system:String>
+    <system:String x:Key="Var">Var</system:String>
+    <system:String x:Key="Yok">Yok</system:String>
+    <system:String x:Key="Arama_Kriterleri">Arama Kriterleri</system:String>
+    <system:String x:Key="Ikı_Tarih_Aralığı">İki Tarih Aralığı</system:String>
+    <system:String x:Key="Ilk_Tarih">İlk Tarih</system:String>
+    <system:String x:Key="Son_Tarih">Son Tarih</system:String>
+    <system:String x:Key="Gunluk">Günlük</system:String>
+    <system:String x:Key="Haftalik">Haftalık</system:String>
+    <system:String x:Key="Aylik">Aylık</system:String>
+    <system:String x:Key="Yillik">Yıllık</system:String>
+    <system:String x:Key="Yazdır">Yazdır</system:String>
+    <system:String x:Key="Excel">Excel</system:String>
+    <system:String x:Key="Arama">Arama</system:String>
+    <system:String x:Key="bu_kayıt_zaten_var">Bu kayıt kodu zaten var. Lütfen Başka bir kaydı tekrar deneyiniz.</system:String>
+    <system:String x:Key="Kayit_Basarili">Başarıyla Kayıt Yapıldı.</system:String>
+    <system:String x:Key="Kayit_Basariyla_Silindi">Başarıyla Kayıt Silindi.</system:String>
+    <system:String x:Key="Eksik_veri_girdiniz">Eksik Veri Girdiniz.</system:String>
+    <system:String x:Key="Stok_dussunmu">Stoktan Düşülsün</system:String>
+    <system:String x:Key="Sifre">Şifre</system:String>
+    <system:String x:Key="Eski_Sifre">Eski Şifre</system:String>
+    <system:String x:Key="Yeni_Sifre">Yeni Şifre</system:String>
+    <system:String x:Key="Aktif_kullanici">Aktif Kullanıcı</system:String>
+    <system:String x:Key="Kullanici_sil">Kullanıcı Sil</system:String>
+    <system:String x:Key="Kullanici_degistir">Kullanıcı Değiştir</system:String>
+    <system:String x:Key="Yeni_kullanici">Yeni Kullanıcı</system:String>
+    <system:String x:Key="Sifre_degistir">Şifre Değiştir</system:String>
+    <system:String x:Key="Yetki_durumu">Yetki Durumu</system:String>
+    <system:String x:Key="Uretim_bitti">Üretim Bitti</system:String>
+    <system:String x:Key="Kayit_bulunamadı">Kayit bulunamadı!</system:String>
+    <system:String x:Key="Duzelt">Düzelt</system:String>
+    <system:String x:Key="Kaydet">Kaydet</system:String>
+    <system:String x:Key="Aktif">Aktif</system:String>
+    <system:String x:Key="Pasif">Pasif</system:String>
+    <system:String x:Key="Zero">Dara Al</system:String>
+    <system:String x:Key="Span">Kalibrasyon</system:String>
+    <system:String x:Key="Ham_deger">Ham Değer</system:String>
+    <system:String x:Key="Kalibrasyon_Agirligi">Kalibrasyon Ağırlığı</system:String>
+    <system:String x:Key="Gercek_agirlik">Gerçek Ağırlık</system:String>
+    <system:String x:Key="Deger">Gerçek Miktar</system:String>
+    <system:String x:Key="Basla">START</system:String>
+    <system:String x:Key="Duraklat">DURAKLAT</system:String>
+    <system:String x:Key="Reset">RESET</system:String>
+    <system:String x:Key="Otomatik">OTOMATİK</system:String>
+    <system:String x:Key="Acil_Stop">Acil Stop</system:String>
+    <system:String x:Key="plc_haberlesme">PLC Haberleşme Hatası</system:String>
+    <system:String x:Key="Akim">Akım</system:String>
+    <system:String x:Key="Maksimum_Akim">Maksimum Akım</system:String>
+    <system:String x:Key="listeden_veri_seciniz">Listeden Veri Seçiniz!!!</system:String>
+    <system:String x:Key="Kompresor">Kompresör</system:String>
+    <system:String x:Key="Hidrolik">Hidrolik</system:String>
+    <system:String x:Key="Lutfen_birveri_Sec">Lütfen Listeden bir veri seçiniz.</system:String>
+    <system:String x:Key="ac_kapa">Lütfen Proğramı kapatıp açınız!!</system:String>
+    <system:String x:Key="back_up">Yedekle</system:String>
+    <system:String x:Key="restore_up">Restore</system:String>
+    <system:String x:Key="Tamam">Tamam</system:String>
+    <system:String x:Key="manuel">MANUEL</system:String>
+    <system:String x:Key="otomatik">OTOMATİK</system:String>
+    <system:String x:Key="var">Var</system:String>
+    <system:String x:Key="deger">Değer</system:String>
+    <system:String x:Key="veri_bulunamadı">Veri bulunamadı!!!</system:String>
+    <system:String x:Key="sifre_dogru">Şifre dogru</system:String>
+    <system:String x:Key="sifre_hatali">Şifre hatalı</system:String>
+    <system:String x:Key="mixer1_kapak_arıza">Mikser Emniyet Kapağı Açık</system:String>
+    <system:String x:Key="hidrolik_termik_arıza">Hidrolik Motoru Termik Arıza</system:String>
+    <system:String x:Key="kompresor_termik_arıza">Kompresör Motoru Termik Arıza</system:String>
+    <system:String x:Key="hava_basinci_yeterli_degil">Hava Basinci Yeterli Degil</system:String>
+    <system:String x:Key="cim_vib_termik_arıza">Çimento Vibratör  Motoru Termik Arıza</system:String>
+    <system:String x:Key="enerji_hatasi">Enerji Hatası</system:String>
+    <system:String x:Key="tartim_banti_vib_termik_arıza">Tartim Bantı Vibratör Motoru Termik Arıza</system:String>
+    <system:String x:Key="agrega1_bunker_vib_termik_ariza">Agrega 1 Bunkeri Vibratör Motoru Termik Arıza</system:String>
+    <system:String x:Key="kova_termik_ariza">Kova Motoru Termik Arıza</system:String>
+    <system:String x:Key="stop">STOP</system:String>
+
+
+</ResourceDictionary>

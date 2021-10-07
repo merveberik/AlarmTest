@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace AlarmTest
 {
@@ -37,7 +38,6 @@ namespace AlarmTest
             timer.Interval = 500;
             timer.Elapsed += OnTimerElapsed;
             timer.Start();
-
 
             alarmDeneme.alarm = "Problem - 1";
             alarmDeneme.seviye = "HIGH";
@@ -67,10 +67,7 @@ namespace AlarmTest
             changeStatus1 = true;
             Alarm_Popup.IsOpen = true;
 
-
-
             grd.Items.Add(alarmDeneme);
-
         }
 
         private void Start_Click2(object sender, RoutedEventArgs e)
@@ -101,6 +98,43 @@ namespace AlarmTest
         private void Stop_Click2(object sender, RoutedEventArgs e)
         {
             changeStatus2 = false;
+        }
+        private void SetLanguageDictionary()
+        {
+
+            ResourceDictionary dict = new ResourceDictionary();
+
+
+            if (Properties.Settings.Default.dil_secimi == "tr")
+            {
+                dict.Source = new Uri("..\\Diller\\Dictionary_Tr.xaml", UriKind.Relative);
+
+            }
+
+            if (Properties.Settings.Default.dil_secimi == "en")
+            {
+                dict.Source = new Uri("..\\Diller\\Dictionary_En.xaml", UriKind.Relative);
+            }
+
+
+            this.Resources.MergedDictionaries.Add(dict);
+        }
+        private void tr_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.dil_secimi = "tr";
+            Properties.Settings.Default.Save();
+            System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("tr");
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            SetLanguageDictionary();
+        }
+
+        private void en_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.dil_secimi = "en";
+            Properties.Settings.Default.Save();
+            System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("en");
+            Thread.CurrentThread.CurrentCulture = cultureInfo;
+            SetLanguageDictionary();
         }
 
         private void Stop_Click3(object sender, RoutedEventArgs e)

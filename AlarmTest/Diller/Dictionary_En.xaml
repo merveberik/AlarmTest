@@ -1,0 +1,516 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="Otomatikte_manuel_calismaz">You cannot do this automatically.!!!</system:String>
+
+
+    <!--Alarmlar-->
+
+    <system:String x:Key="1">S1 - CVY1 Thermal Fault</system:String>
+    <system:String x:Key="2">S1 - CVY1 Speed Sensor Fault</system:String>
+    <system:String x:Key="3">S2 - CVY2 Thermal Fault</system:String>
+    <system:String x:Key="4">S2 - CVY2 Speed Sensor Fault</system:String>
+    <system:String x:Key="5">S3 - CVY3 Thermal Fault</system:String>
+    <system:String x:Key="6">S3 - CVY3 Speed Sensor Fault</system:String>
+    <system:String x:Key="7">S4 - CVY4 Thermal Fault</system:String>
+    <system:String x:Key="8">S4 - CVY4 Speed Sensor Fault</system:String>
+    <system:String x:Key="9">S6 - CVY5 Thermal Fault</system:String>
+    <system:String x:Key="10">S6 - CVY5 Speed Sensor Fault</system:String>
+    <system:String x:Key="11">S5 - SC1 Thermal Fault</system:String>
+    <system:String x:Key="12">S7 - CVY6 Thermal Fault</system:String>
+    <system:String x:Key="13">S7 - CVY6 Inverter Fault</system:String>
+    <system:String x:Key="14">Phase Protection Relay Fault</system:String>
+    <system:String x:Key="15">Emergency Stop</system:String>
+    <system:String x:Key="16">PLC ERROR</system:String>
+    <system:String x:Key="17">S1 - CVY1 Maintenance time is full.</system:String>
+    <system:String x:Key="18">S2 - CVY2 Maintenance time is full.</system:String>
+    <system:String x:Key="19">S3 - CVY3 Maintenance time is full.</system:String>
+    <system:String x:Key="20">S4 - CVY4 Maintenance time is full.</system:String>
+    <system:String x:Key="21">S6 - CVY5 Maintenance time is full.</system:String>
+    <system:String x:Key="22">S5 - SC1  Maintenance time is full.</system:String>
+    <system:String x:Key="23">S7 - CVY6 Maintenance time is full.</system:String>
+
+    <!--Alarmlar-->
+
+    <system:String x:Key="Makina_kodu">LEVY PORTABLE CRUSHING AND SCREENING 1</system:String>
+    <system:String x:Key="Makina_kodu2">LEVY PORTABLE CRUSHING AND SCREENING 2</system:String>
+
+    <system:String x:Key="Olay">Logging</system:String>
+    <system:String x:Key="Olay_Report">Logging Report</system:String>
+    <system:String x:Key="Kirici_Akim_Ayar">Crusher Amper Setting</system:String>
+
+    <system:String x:Key="Alarm_Id">Alarm Id</system:String>
+
+    <system:String x:Key="Yetkiniz_yok">You are not authorized to do this operation.</system:String>
+    <system:String x:Key="Log_report">Log Report</system:String>
+
+    <system:String x:Key="Degistirme">Edit</system:String>
+    <system:String x:Key="Izleme">Monitoring</system:String>
+
+    <system:String x:Key="Iptal">Cancel</system:String>
+    <system:String x:Key="Sirasi">Sequence</system:String>
+    <system:String x:Key="makina_adi">Machine</system:String>
+
+
+    <system:String x:Key="Motor_calısma_siras">Motor Operating Sequence</system:String>
+
+    <system:String x:Key="bunker3_dolu_start_set">Bunker Full Start Time</system:String>
+    <system:String x:Key="bunker_dolu_gecikme_set">Bunker Full Stop Time</system:String>
+    <system:String x:Key="bunker_dolu_set">Bunker Full Percent Set Value</system:String>
+    <system:String x:Key="bunker_bos_set">Bunker Empty Percent Set Value</system:String>
+
+
+    <system:String x:Key="MWI_notready">MWI Not Ready!!</system:String>
+    <system:String x:Key="TC1000_notready">TC1000 Not Ready!!</system:String>
+    <system:String x:Key="alarm_raporu">Alarm Report</system:String>
+    <system:String x:Key="gercek_deger">Real Value %</system:String>
+    <system:String x:Key="ham_deger">Row Value</system:String>
+
+    <system:String x:Key="bunker3_dolu">Bunker 3 Poz 27 Full</system:String>
+    <system:String x:Key="bunker2_dolu">Bunker 2 Poz 17 Full</system:String>
+    <system:String x:Key="bunker1_dolu">Bunker 1 Poz 10 Full</system:String>
+
+    <system:String x:Key="radyal4_sol">Radyal 4 Left Feedback Fault</system:String>
+    <system:String x:Key="radyal4_sag">Radyal 4 Right Feedback Fault</system:String>
+    <system:String x:Key="radyal4_termik">Radyal 4 Thermal Fault</system:String>
+
+    <system:String x:Key="radyal3_sol">Radyal 3 Left Feedback Fault</system:String>
+    <system:String x:Key="radyal3_sag">Radyal 3 Right Feedback Fault</system:String>
+    <system:String x:Key="radyal3_termik">Radyal 3 Thermal Fault</system:String>
+
+    <system:String x:Key="radyal2_sol">Radyal 2 Left Feedback Fault</system:String>
+    <system:String x:Key="radyal2_sag">Radyal 2 Right Feedback Fault</system:String>
+    <system:String x:Key="radyal2_termik">Radyal 2 Thermal Fault</system:String>
+
+    <system:String x:Key="radyal1_sol">Radyal 1 Left Feedback Fault</system:String>
+    <system:String x:Key="radyal1_sag">Radyal 1 Right Feedback Fault</system:String>
+    <system:String x:Key="radyal1_termik">Radyal 1 Thermal Fault</system:String>
+
+    <system:String x:Key="buzzer_stop">Buzzer Stop</system:String>
+
+    <system:String x:Key="remote">Remote</system:String>
+
+    <system:String x:Key="hammadde_kullanim_raporu">Raw Material Usage Report</system:String>
+    <system:String x:Key="genel_siren_sure">General Siren Time</system:String>
+    <system:String x:Key="lokal_siren_sure">Local Siren Time</system:String>
+
+    <system:String x:Key="calisma_modu3">Full Automatic</system:String>
+    <system:String x:Key="calisma_modu2">Semi  Automatic</system:String>
+    <system:String x:Key="calisma_modu1">MANUAL</system:String>
+    <system:String x:Key="ilk_tarih_buyuk">The first date cannot be greater than the last date.!!</system:String>
+    <system:String x:Key="cal_suresi_min_2">Note : You can enter a minimum of 2 seconds for working and stopping times .. !!</system:String>
+    <system:String x:Key="uygulama_zaten_acık">The application is already running.!!</system:String>
+    <system:String x:Key="restore__">To make a restore, close and open the program. And Restart the program. Enter the backup file name when reopened.!!</system:String>
+    <system:String x:Key="backup__">To make a backup, close and reopen the program.  Enter the backup file name when reopened.!!</system:String>
+    <system:String x:Key="restore_">You have successfully restore.</system:String>
+    <system:String x:Key="backup_">You have successfully backup.</system:String>
+    <system:String x:Key="Hammadde_giris_raporu">Raw Material Entry Report</system:String>
+    <system:String x:Key="Uretim_raporu">Production Report</system:String>
+    <system:String x:Key="urun">Product</system:String>
+    <system:String x:Key="son_yuz_kayıt">Note:  Max  100 records shown</system:String>
+    <system:String x:Key="Admini_sifre_degistirme">You can not change the  password of Admin.</system:String>
+    <system:String x:Key="Admini_silememe">You can not delete Admin.</system:String>
+    <system:String x:Key="Admini_guncellememe">You can not update Admin!!!</system:String>
+
+    <system:String x:Key="Akim_start_on_delay">Current Start On Delay</system:String>
+    <system:String x:Key="Akim_stop_off_delay">Current Stop Off Delay</system:String>
+    <system:String x:Key="Akim_stop_set">Current Stop Set</system:String>
+    <system:String x:Key="buyuk_deger_sorunu">You cannot enter a value greater than 100</system:String>
+    <system:String x:Key="Faz_hatasi">Phase Fault</system:String>
+    <system:String x:Key="buzzer_sus">Buzzer Stop</system:String>
+    <system:String x:Key="bant_kaydi_var_mi">Belt Slide Safety</system:String>
+    <system:String x:Key="calisma_saati_ve_bakim_per">Working Hour And Maintenance Period</system:String>
+    <system:String x:Key="Kalan_sure">Remaaining Time</system:String>
+    <system:String x:Key="Bakim_peryodu">Maintenance Period</system:String>
+    <system:String x:Key="calisma_saati">Working Hour</system:String>
+
+
+    <system:String x:Key="Bunker_dolu">Bunker Full</system:String>
+    <system:String x:Key="Silo_2_Dolu">Silo 2 Full</system:String>
+    <system:String x:Key="Silo_1_Dolu">Silo 1 Full</system:String>
+
+    <system:String x:Key="MJ_monitoring_ariza">MJ Feedback Fault</system:String>
+    <system:String x:Key="MJ_termik_ariza">MJ Thermal Fault</system:String>
+    <system:String x:Key="MJ2_monitoring_ariza">MJ2 Feedback Fault</system:String>
+    <system:String x:Key="MJ2_termik_ariza">MJ2 Thermal Fault</system:String>
+
+
+    <system:String x:Key="TC1000_Soft_ariza">TC1000 Inverter Fault</system:String>
+    <system:String x:Key="TC1000_monitoring_ariza">TC1000 Feedback Fault</system:String>
+    <system:String x:Key="TC1000_termik_ariza">TC1000 Thermal Fault</system:String>
+
+    <system:String x:Key="MVI_soft_ariza">MVI Soft Sterter Fault</system:String>
+    <system:String x:Key="MVI_monitoring_ariza">MVI Feedback Fault</system:String>
+    <system:String x:Key="MVI_termik_ariza">MVI Thermal Fault</system:String>
+
+    <system:String x:Key="GF_inverter_ariza">GF Inverter Fault</system:String>
+    <system:String x:Key="GF_monitoring_ariza">GF Feedback Fault</system:String>
+    <system:String x:Key="GF_termik_ariza">GF Thermal Fault</system:String>
+
+
+    <system:String x:Key="GF2_inverter_ariza">GF2 Inverter Fault</system:String>
+    <system:String x:Key="GF2_monitoring_ariza">GF2 Feedback Fault</system:String>
+    <system:String x:Key="GF2_termik_ariza">GF2 Thermal Fault</system:String>
+
+
+    <system:String x:Key="PF2_inverter_ariza">PF2 Inverter Fault</system:String>
+    <system:String x:Key="PF2_monitoring_ariza">PF2 Feedback Fault</system:String>
+    <system:String x:Key="PF2_termik_ariza">PF2 Thermal Fault</system:String>
+
+
+    <system:String x:Key="BF_monitoring_ariza">BF Feedback Fault</system:String>
+    <system:String x:Key="BF_inverter_ariza">BF Inverter Fault</system:String>
+    <system:String x:Key="BF_termik_ariza">BF Thermal Fault</system:String>
+
+
+    <system:String x:Key="IS1_monitoring_ariza">IS1 Feedback Fault</system:String>
+
+    <system:String x:Key="IS1_termik_ariza">IS1 Thermal Fault</system:String>
+
+    <system:String x:Key="IWS2_monitoring_ariza">IWS2 Feedback Fault</system:String>
+    <system:String x:Key="IWS2_termik_ariza">IWS2 Thermal Fault</system:String>
+
+
+    <system:String x:Key="IWS1_monitoring_ariza">IWS1 Feedback Fault</system:String>
+    <system:String x:Key="IWS1_termik_ariza">IWS1 Thermal Fault</system:String>
+
+    <system:String x:Key="VS2_monitoring_ariza">VS2 Geribesleme Arızası</system:String>
+    <system:String x:Key="VS2_termik_ariza">VS2 Termik Arızası</system:String>
+
+
+    <system:String x:Key="MD2_monitoring_ariza">MD2 Geribesleme Arızası</system:String>
+    <system:String x:Key="MD2_termik_ariza">MD2 Termik Arızası</system:String>
+
+
+    <system:String x:Key="SP2_V_monitoring_ariza">SP2_V Feedback Fault</system:String>
+    <system:String x:Key="SP2_V_termik_ariza">SP2_V Thermal Fault</system:String>
+    <system:String x:Key="SP2_P_suYok">SP2_V No Water</system:String>
+    <system:String x:Key="SP2_P_monitoring_ariza">SP2_V Feedback Fault</system:String>
+    <system:String x:Key="SP2_P_termik_ariza">SP2_V Thermal Fault</system:String>
+
+
+    <system:String x:Key="SP1_V_monitoring_ariza">SP1_V Feedback Fault</system:String>
+    <system:String x:Key="SP1_V_termik_ariza">CV22 Thermal Fault</system:String>
+    <system:String x:Key="SP1_P_suYok">SP1_P No Water</system:String>
+    <system:String x:Key="SP1_P_monitoring_ariza">SP1_P Feedback Fault</system:String>
+    <system:String x:Key="SP1_P_termik_ariza">SP1_P Thermal Fault</system:String>
+
+
+    <system:String x:Key="CV20_metal_ariza">CVY20 Metal Dedector Alarm</system:String>
+    <system:String x:Key="CV20_ipli_ariza">CVY20 Rope Fault</system:String>
+    <system:String x:Key="CV20_devir_bekci_ariza">CVY20 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV20_monitoring_ariza">CVY20 Feedback Fault</system:String>
+    <system:String x:Key="CV20_bant_kaydi_ariza">CVY20 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV20_termik_ariza">CVY20 Thermal Fault</system:String>
+
+    <system:String x:Key="CV19_ipli_ariza">CVY19 Rope Fault</system:String>
+    <system:String x:Key="CV19_devir_bekci_ariza">CVY19 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV19_monitoring_ariza">CVY19 Feedback Fault</system:String>
+    <system:String x:Key="CV19_bant_kaydi_ariza">CVY19 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV19_termik_ariza">CVY19 Thermal Fault</system:String>
+
+    <system:String x:Key="MD1_monitoring_ariza">MD1 Feedback Fault</system:String>
+    <system:String x:Key="MD1_termik_ariza">MD1 Thermal Fault</system:String>
+
+    <system:String x:Key="CV18_ipli_ariza">CVY18 Rope Fault</system:String>
+    <system:String x:Key="CV18_devir_bekci_ariza">CVY18 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV18_monitoring_ariza">CVY18 Feedback Fault</system:String>
+    <system:String x:Key="CV18_bant_kaydi_ariza">CVY18 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV18_termik_ariza">CVY18 Thermal Fault</system:String>
+
+    <system:String x:Key="CV17_ipli_ariza">CVY17 Rope Fault</system:String>
+    <system:String x:Key="CV17_devir_bekci_ariza">CVY17 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV17_monitoring_ariza">CVY17 Feedback Fault</system:String>
+    <system:String x:Key="CV17_bant_kaydi_ariza">CVY17 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV17_termik_ariza">CVY17 Thermal Fault</system:String>
+
+
+    <system:String x:Key="OBM_termik_ariza">OBM Thermal Fault</system:String>
+    <system:String x:Key="OBM_monitoring_ariza">OBM Feedback Fault</system:String>
+
+
+    <system:String x:Key="CV16_ipli_ariza">CVY16 Rope Fault</system:String>
+    <system:String x:Key="CV16_devir_bekci_ariza">CVY16 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV16_monitoring_ariza">CVY16 Feedback Fault</system:String>
+    <system:String x:Key="CV16_bant_kaydi_ariza">CVY16 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV16_termik_ariza">CVY16 Thermal Fault</system:String>
+
+    <system:String x:Key="CV15_ipli_ariza">CV15 Rope Fault</system:String>
+    <system:String x:Key="CV15_devir_bekci_ariza">CV15 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV15_monitoring_ariza">CV15 Feedback Fault</system:String>
+    <system:String x:Key="CV15_bant_kaydi_ariza">CV15 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV15_termik_ariza">CV15 Thermal Fault</system:String>
+
+
+    <system:String x:Key="CDM_termik_ariza">CDM Thermal Fault</system:String>
+    <system:String x:Key="CDM_monitoring_ariza">CDM Feedback Fault</system:String>
+    <system:String x:Key="CDM_inverter_ariza">CDM Inverter Fault</system:String>
+
+
+    <system:String x:Key="CV14_ipli_ariza">CVY14 Rope Fault</system:String>
+    <system:String x:Key="CV14_devir_bekci_ariza">CVY14 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV14_monitoring_ariza">CVY14 Feedback Fault</system:String>
+    <system:String x:Key="CV14_bant_kaydi_ariza">CVY14 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV14_termik_ariza">CVY14 Thermal Fault</system:String>
+
+    <system:String x:Key="CV13_ipli_ariza">CVY13 Rope Fault</system:String>
+    <system:String x:Key="CV13_devir_bekci_ariza">CVY13 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV13_monitoring_ariza">CVY13 Feedback Fault</system:String>
+    <system:String x:Key="CV13_bant_kaydi_ariza">CVY13 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV13_termik_ariza">CVY13 Thermal Fault</system:String>
+
+    <system:String x:Key="CV12_ipli_ariza">CVY12 Rope Fault</system:String>
+    <system:String x:Key="CV12_devir_bekci_ariza">CVY12 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV12_monitoring_ariza">CVY12 Feedback Fault</system:String>
+    <system:String x:Key="CV12_bant_kaydi_ariza">CVY12 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV12_termik_ariza">CVY12 Thermal Fault</system:String>
+
+    <system:String x:Key="CV11_ipli_ariza">CVY11 Rope Fault</system:String>
+    <system:String x:Key="CV11_devir_bekci_ariza">CVY11 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV11_monitoring_ariza">CVY11 Feedback Fault</system:String>
+    <system:String x:Key="CV11_bant_kaydi_ariza">CVY11 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV11_termik_ariza">CVY11 Thermal Fault</system:String>
+
+    <system:String x:Key="CV10_ipli_ariza">CVY10 Rope Fault</system:String>
+    <system:String x:Key="CV10_devir_bekci_ariza">CVY10 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV10_monitoring_ariza">CVY10 Feedback Fault</system:String>
+    <system:String x:Key="CV10_bant_kaydi_ariza">CVY10 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV10_termik_ariza">CVY10 Thermal Fault</system:String>
+
+
+    <system:String x:Key="PF1_inverter_ariza">PF1 Inverter fAULT</system:String>
+    <system:String x:Key="PF1_monitoring_ariza">PF1 Feedback Fault</system:String>
+    <system:String x:Key="PF1_termik_ariza">PF1 Thermal Fault</system:String>
+
+    <system:String x:Key="CV9_ipli_ariza">CVY9 Rope Fault</system:String>
+    <system:String x:Key="CV9_devir_bekci_ariza">CVY9 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV9_monitoring_ariza">CVY9 Feedback Fault</system:String>
+    <system:String x:Key="CV9_bant_kaydi_ariza">CVY9 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV9_termik_ariza">CVY9 Thermal Fault</system:String>
+
+    <system:String x:Key="CV8_ipli_ariza">CVY8 Rope Fault</system:String>
+    <system:String x:Key="CV8_devir_bekci_ariza">CVY8 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV8_monitoring_ariza">CVY8 Feedback Fault</system:String>
+    <system:String x:Key="CV8_bant_kaydi_ariza">CVY8 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV8_termik_ariza">CVY8 Thermal Fault</system:String>
+
+
+    <system:String x:Key="MSP_mixer_ariza">MSP Mixer Thermal Fault</system:String>
+    <system:String x:Key="MSP_inverter_ariza">MSP Inverter Fault</system:String>
+    <system:String x:Key="MSP_monitoring_ariza">MSP Feedback Fault</system:String>
+    <system:String x:Key="MSP_termik_ariza">MSP Thermal Fault</system:String>
+
+    <system:String x:Key="CV7_metal_ariza">CVY7 Metal Dedector Alarm</system:String>
+    <system:String x:Key="CV7_ipli_ariza">CVY7 Rope Fault</system:String>
+    <system:String x:Key="CV7_devir_bekci_ariza">CVY7 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV7_monitoring_ariza">CVY7 Feedback Fault</system:String>
+    <system:String x:Key="CV7_bant_kaydi_ariza">CVY7 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV7_termik_ariza">CVY7 Thermal Fault</system:String>
+
+    <system:String x:Key="VS1_termik_ariza">VS1 Thermal Fault</system:String>
+    <system:String x:Key="VS1_monitoring_ariza">VS1 Feedback Fault</system:String>
+
+    <system:String x:Key="CV6_metal_ariza">CVY6 Metal Dedector Alarm</system:String>
+    <system:String x:Key="CV6_ipli_ariza">CVY6 Rope Fault</system:String>
+    <system:String x:Key="CV6_devir_bekci_ariza">CVY6 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV6_monitoring_ariza">CVY6 Feedback Fault</system:String>
+    <system:String x:Key="CV6_bant_kaydi_ariza">CVY6 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV6_termik_ariza">CVY6 Thermal Fault</system:String>
+
+    <system:String x:Key="CV5_ipli_ariza">CV7 Rope Fault</system:String>
+    <system:String x:Key="CV5_devir_bekci_ariza">CVY5 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV5_monitoring_ariza">CVY5 Feedback Fault</system:String>
+    <system:String x:Key="CV5_bant_kaydi_ariza">CVY5 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV5_termik_ariza">CVY5 Thermal Fault</system:String>
+
+    <system:String x:Key="CV4_ipli_ariza">CVY4 Rope Fault</system:String>
+    <system:String x:Key="CV4_devir_bekci_ariza">CVY4 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV4_monitoring_ariza">CVY4 Feedback Fault</system:String>
+    <system:String x:Key="CV4_bant_kaydi_ariza">CVY4 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV4_termik_ariza">CVY4 Thermal Fault</system:String>
+
+    <system:String x:Key="CV3_ipli_ariza">CVY3 Rope Fault</system:String>
+    <system:String x:Key="CV3_devir_bekci_ariza">CVY3 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV3_monitoring_ariza">CVY3 Feedback Fault</system:String>
+    <system:String x:Key="CV3_bant_kaydi_ariza">CVY3 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV3_termik_ariza">CVY3 Thermal Fault</system:String>
+
+    <system:String x:Key="CV2_inverter_alarm">CV2 Inverter Fault</system:String>
+    <system:String x:Key="CV2_ipli_ariza">CVY2 Rope Fault</system:String>
+    <system:String x:Key="CV2_devir_bekci_ariza">CVY2 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV2_monitoring_ariza">CVY2 Feedback Fault</system:String>
+    <system:String x:Key="CV2_bant_kaydi_ariza">CVY2 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV2_termik_ariza">CVY2 Thermal Fault</system:String>
+
+    <system:String x:Key="CV1_ipli_ariza">CVY1 Rope Fault</system:String>
+    <system:String x:Key="CV1_devir_bekci_ariza">CVY1 Speed Monitoring Fault</system:String>
+    <system:String x:Key="CV1_monitoring_ariza">CVY1 Feedback Fault</system:String>
+    <system:String x:Key="CV1_bant_kaydi_ariza">CVY11 Belt Slide Safety Fault</system:String>
+    <system:String x:Key="CV1_termik_ariza">CVY1 Thermal Fault</system:String>
+
+    <system:String x:Key="besleyici_bant2">Belt Feeder 2</system:String>
+    <system:String x:Key="besleyici_bant1">Belt Feeder 1</system:String>
+    <system:String x:Key="bant_kaydi">Rope Switch</system:String>
+    <system:String x:Key="besleme_banti2">Belt Feeder 2</system:String>
+    <system:String x:Key="besleme_banti1">Belt Feeder 1</system:String>
+    <system:String x:Key="calisma_sure">Starting Time</system:String>
+    <system:String x:Key="durma_sure">Stoping Time</system:String>
+    <system:String x:Key="Encoder">Encoder</system:String>
+    <system:String x:Key="Kırıcı_Akimlari_Raporu">Crusher Current Report</system:String>
+    <system:String x:Key="uretilen">Product</system:String>
+    <system:String x:Key="hammedde_tanimlama">Raw Material Setting</system:String>
+    <system:String x:Key="konik2">Cone Crusher 2</system:String>
+    <system:String x:Key="konik1">Cone Crusher 1</system:String>
+    <system:String x:Key="ceneli">Jaw Crusher</system:String>
+    <system:String x:Key="Besleyici">Apron Feeder</system:String>
+    <system:String x:Key="Korna">HORN</system:String>
+    <system:String x:Key="scada">Scada</system:String>
+    <system:String x:Key="devir_bekcisi_ayar">Rotate Monitor</system:String>
+    <system:String x:Key="Meka_kırma_eleme">Meka Crushing Screening</system:String>
+    <system:String x:Key="Urun_Stok">Product Stock</system:String>
+    <system:String x:Key="Urun_sevkiyat">Product Shipment</system:String>
+    <system:String x:Key="Hammadde_stok_takibi">Row Metarial Stock Control</system:String>
+    <system:String x:Key="Sureler">Timing</system:String>
+    <system:String x:Key="Username">Planning</system:String>
+    <system:String x:Key="Kayıtlar">Records</system:String>
+    <system:String x:Key="Stok">Stock</system:String>
+    <system:String x:Key="Raporlar">Reports</system:String>
+    <system:String x:Key="Ayarlar">Settings</system:String>
+    <system:String x:Key="Alarmlar">Alarms</system:String>
+    <!--<system:String x:Key="Dil">Language</system:String>-->
+    <system:String x:Key="Çıkış">Exit</system:String>
+    <system:String x:Key="Silo_Tanimlama">Silo Description</system:String>
+    <system:String x:Key="Stok_Takibi">Inventory Tracking</system:String>
+    <system:String x:Key="Hammadde_Girisi">Raw Material Entry List</system:String>
+    <system:String x:Key="Üretim_Raporu">Production Report</system:String>
+    <system:String x:Key="Eski_İrsaliyeler">Old Vouchers</system:String>
+    <system:String x:Key="Stok_Raporu">Stock Report</system:String>
+    <system:String x:Key="Toplam_Üretim">Total Production Report</system:String>
+    <system:String x:Key="Backup_ve_Restore">Backup And Restore</system:String>
+    <system:String x:Key="irsaliye">Consignment No</system:String>
+    <system:String x:Key="Kurulum_Ayarları">Setup Options</system:String>
+    <system:String x:Key="Kullanıcı_Ayarları">User Settings</system:String>
+    <system:String x:Key="Türkçe">Turkish</system:String>
+    <system:String x:Key="İngilizce">English</system:String>
+    <system:String x:Key="Arapça">Arabic</system:String>
+    <system:String x:Key="Fransizca">French</system:String>
+    <system:String x:Key="Alinacak">Set Value</system:String>
+    <system:String x:Key="Alinan">Value</system:String>
+    <system:String x:Key="Hata">Error</system:String>
+    <system:String x:Key="Biten_Uretimler">Finished Production</system:String>
+    <system:String x:Key="Musteri_Adresi">Customer Address</system:String>
+    <system:String x:Key="Santiye_Adresi">Site Address</system:String>
+    <system:String x:Key="Kullanici">User</system:String>
+    <system:String x:Key="Toplam_Uretim">Total Production</system:String>
+    <system:String x:Key="Sil">Delete</system:String>
+    <system:String x:Key="Sira_No">ID</system:String>
+    <system:String x:Key="Adi">Name</system:String>
+    <system:String x:Key="Yetkili">Authorized</system:String>
+    <system:String x:Key="Tel">Tel</system:String>
+    <system:String x:Key="Fax">Fax</system:String>
+    <system:String x:Key="Adres">Adress</system:String>
+    <system:String x:Key="Il">City</system:String>
+    <system:String x:Key="Ilce">Town</system:String>
+    <system:String x:Key="Bolge">Area</system:String>
+    <system:String x:Key="Vergi_Da">Tax Office</system:String>
+    <system:String x:Key="Vergi_No">Tax No</system:String>
+    <system:String x:Key="Uzaklik">Distance</system:String>
+    <system:String x:Key="Plaka">Plate</system:String>
+    <system:String x:Key="Kapasite">Capacity</system:String>
+    <system:String x:Key="Tipi">Type</system:String>
+    <system:String x:Key="Sicil_No">Registration Number</system:String>
+    <system:String x:Key="Genel_Toplam">Grand Total</system:String>
+    <system:String x:Key="Durum">Status</system:String>
+    <system:String x:Key="Tarih">Date</system:String>
+    <system:String x:Key="Aciklama">Note</system:String>
+    <system:String x:Key="Parametreler">Parameters</system:String>
+    <system:String x:Key="Klepe">Gate</system:String>
+    <system:String x:Key="Silo">Silo</system:String>
+    <system:String x:Key="Silo1">Silo 1</system:String>
+    <system:String x:Key="Silo2">Silo 2</system:String>
+    <system:String x:Key="Silo3">Silo 3</system:String>
+    <system:String x:Key="Silo4">Silo 4</system:String>
+    <system:String x:Key="Silo5">Silo 5</system:String>
+    <system:String x:Key="Silo6">Silo 6</system:String>
+    <system:String x:Key="Malzeme">Row material</system:String>
+    <system:String x:Key="Giren">In Row material</system:String>
+    <system:String x:Key="Cikan">Out Row material</system:String>
+    <system:String x:Key="Miktar">Quantity</system:String>
+    <system:String x:Key="Saat">Time</system:String>
+    <system:String x:Key="Kalibrasyon">Calibration</system:String>
+    <system:String x:Key="Var">True</system:String>
+    <system:String x:Key="Yok">False</system:String>
+    <system:String x:Key="Arama_Kriterleri">Search Criteria</system:String>
+    <system:String x:Key="Ikı_Tarih_Aralığı">Search date range</system:String>
+    <system:String x:Key="Ilk_Tarih">First Date</system:String>
+    <system:String x:Key="Son_Tarih">Last Date</system:String>
+    <system:String x:Key="Gunluk">Daily</system:String>
+    <system:String x:Key="Haftalik">Weekly</system:String>
+    <system:String x:Key="Aylik">Monthly</system:String>
+    <system:String x:Key="Yillik">Yearly</system:String>
+    <system:String x:Key="Yazdır">Print</system:String>
+    <system:String x:Key="Excel">Excel</system:String>
+    <system:String x:Key="Arama">Search</system:String>
+    <system:String x:Key="bu_kayıt_zaten_var">This registration code already exists. Please try another recording again.</system:String>
+    <system:String x:Key="Kayit_Basarili">Successfully Registered.</system:String>
+    <system:String x:Key="Kayit_Basariyla_Silindi">The record was successfully deleted</system:String>
+    <system:String x:Key="Eksik_veri_girdiniz">You entered missing data.</system:String>
+    <system:String x:Key="Stok_dussunmu">Decrease Stock</system:String>
+    <system:String x:Key="Sifre">Password</system:String>
+    <system:String x:Key="Eski_Sifre">Old Password</system:String>
+    <system:String x:Key="Yeni_Sifre">New Password</system:String>
+    <system:String x:Key="Aktif_kullanici">Active User</system:String>
+    <system:String x:Key="Kullanici_sil">Delete User</system:String>
+    <system:String x:Key="Kullanici_degistir">Change User</system:String>
+    <system:String x:Key="Yeni_kullanici">New User</system:String>
+    <system:String x:Key="Sifre_degistir">Change Password</system:String>
+    <system:String x:Key="Yetki_durumu">Authorization Status</system:String>
+    <system:String x:Key="Uretim_bitti">The production is over!</system:String>
+    <system:String x:Key="Kayit_bulunamadı">No Records Found!</system:String>
+    <system:String x:Key="Duzelt">Edit</system:String>
+    <system:String x:Key="Kaydet">Save</system:String>
+    <system:String x:Key="Aktif">Active</system:String>
+    <system:String x:Key="Pasif">Pasive</system:String>
+    <system:String x:Key="Zero">Zero</system:String>
+    <system:String x:Key="Span">Span</system:String>
+    <system:String x:Key="Ham_deger">Row Value</system:String>
+    <system:String x:Key="Kalibrasyon_Agirligi">Calibration Weight</system:String>
+    <system:String x:Key="Gercek_agirlik">Reel Weight</system:String>
+    <system:String x:Key="Deger">Value</system:String>
+    <system:String x:Key="Basla">START</system:String>
+    <system:String x:Key="Duraklat">PAUSE</system:String>
+    <system:String x:Key="Seviye">Level</system:String>
+    <system:String x:Key="Reset">RESET</system:String>
+    <system:String x:Key="Otomatik">AUTOMATIC</system:String>
+    <system:String x:Key="Acil_Stop">Emergency Stop</system:String>
+    <system:String x:Key="plc_haberlesme">PLC Connection Error</system:String>
+    <system:String x:Key="Akim">Current</system:String>
+    <system:String x:Key="Maksimum_Akim">Maximum Current</system:String>
+    <system:String x:Key="listeden_veri_seciniz">Select Data from List !!!</system:String>
+    <system:String x:Key="Kompresor">Compressor</system:String>
+    <system:String x:Key="Hidrolik">Hydraulic</system:String>
+    <system:String x:Key="Lutfen_birveri_Sec">Please select a data from the list</system:String>
+    <system:String x:Key="ac_kapa">Please close and open the program!!</system:String>
+    <system:String x:Key="back_up">Backup</system:String>
+    <system:String x:Key="restore_up">Restore</system:String>
+    <system:String x:Key="Tamam">Ok</system:String>
+    <system:String x:Key="manuel">MANUAL</system:String>
+    <system:String x:Key="otomatik">AUTOMATIC</system:String>
+    <system:String x:Key="var">Ok</system:String>
+    <system:String x:Key="deger">Value</system:String>
+    <system:String x:Key="Vibrator">Vibrator</system:String>
+    <system:String x:Key="veri_bulunamadı">Data not found!!!</system:String>
+    <system:String x:Key="sifre_dogru">Password is ok.</system:String>
+    <system:String x:Key="sifre_hatali">Password is wrong</system:String>
+    <system:String x:Key="mixer1_kapak_arıza">Mixer Safety Window Open</system:String>
+    <system:String x:Key="hidrolik_termik_arıza">Hydrolic Motor Thermal Breakdown</system:String>
+    <system:String x:Key="kompresor_termik_arıza">Compressor Motor Thermal Breakdown</system:String>
+    <system:String x:Key="hava_basinci_yeterli_degil">Air Pressure Is Not Enough</system:String>
+    <system:String x:Key="cim_vib_termik_arıza">Cement Vibrator Motor Thermal Breakdown</system:String>
+    <system:String x:Key="enerji_hatasi">Electrical Error</system:String>
+    <system:String x:Key="tartim_banti_vib_termik_arıza">Weighting Belt Vibrator Motor Thermal Breakdown</system:String>
+    <system:String x:Key="agrega1_bunker_vib_termik_ariza">Aggregate 1 Bunker Vibrator Motor Thermal Breakdown</system:String>
+    <system:String x:Key="kova_termik_ariza">Aquarius Motor Thermal Breakdown</system:String>
+    <system:String x:Key="stop">STOP</system:String>
+
+</ResourceDictionary>

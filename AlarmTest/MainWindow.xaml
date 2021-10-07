@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:AlarmTest"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="900">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Diller/Dictionary_Tr.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="300"/>
@@ -66,9 +74,10 @@
         </Grid>
         <Border Grid.Column="0">
             <StackPanel>
-                <Button x:Name="button1" Background="#FF00A2FF" Content="LEVEL-1" Click="Start_Click1" Width="120" Height="110"/>
-                <Button x:Name="button4" Background="#FF00A2FF" Content="LEVEL-2" Click="Start_Click2" Width="120" Height="110"/>
-                <Button x:Name="button5"  Background="#FF00A2FF" Content="LEVEL-3" Click="Start_Click3" Width="120" Height="110"/>
+
+                <Button x:Name="button1" Background="#FF00A2FF" Content="{DynamicResource Seviye}" Click="Start_Click1" Width="120" Height="110"/>
+                <Button x:Name="button4" Background="#FF00A2FF" Content="{DynamicResource Seviye}" Click="Start_Click2" Width="120" Height="110"/>
+                <Button x:Name="button5"  Background="#FF00A2FF" Content="{DynamicResource Seviye}" Click="Start_Click3" Width="120" Height="110"/>
             </StackPanel>
 
         </Border>
@@ -77,23 +86,49 @@
                 <Button x:Name="button3" Background="#FF00A2FF" Content="STOP-1" Click="Stop_Click1" Width="120" Height="110"/>
                 <Button x:Name="button6" Background="#FF00A2FF" Content="STOP-2" Click="Stop_Click2" Width="120" Height="110"/>
                 <Button x:Name="button7" Background="#FF00A2FF" Content="STOP-3" Click="Stop_Click3" Width="120" Height="110"/>
+
+                <Border >
+                    <TextBlock x:Name="text1" FontSize="30" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="150" Height="35" />
+                </Border>
             </StackPanel>
 
         </Border>
-        <Border Grid.Column="2">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="300"/>
-                    <RowDefinition Height="300"/>
-                </Grid.RowDefinitions>
-                <Border Grid.Row="0">
-                    <Button x:Name="button2" Background="#FFFF2E00" Content="RESET" Click="Reset_Click" Width="120" Height="60"/>
-                </Border>
-                <Border Grid.Row="1">
-                    <TextBlock x:Name="text1" FontSize="30" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="150" Height="35" />
-                </Border>
-            </Grid>
+        <!--<Border Grid.Column="2">-->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="2" Orientation="Vertical">
+                <Grid>
 
-        </Border>
+                    <StackPanel>
+                        <Border Grid.Row="0">
+                            <Button Style="{StaticResource GlassButton}" Height="35" Width="80" Click="Reset_Click" Content="{DynamicResource Duraklat}" FontSize="14"/>
+                        </Border>
+                        <Menu FontSize="16" Height="25">
+                        <Menu.Background>
+                            <LinearGradientBrush EndPoint="1,1.6" StartPoint="1,0">
+                                <GradientStop Color="#FFA6A8AA"/>
+                                <GradientStop Color="#FF39444D" Offset="0.627"/>
+                            </LinearGradientBrush>
+                        </Menu.Background>
+                        <MenuItem  Header="{DynamicResource Dil}"  Foreground="Black" >
+                            <Separator/>
+                            <MenuItem Header="{DynamicResource Türkçe}" Click="tr_Click" Background="#FF676E74" Foreground="White">
+                            </MenuItem>
+                            <MenuItem Header="{DynamicResource İngilizce}" Click="en_Click" Background="#FF676E74" Foreground="White">
+                            </MenuItem>
+                        </MenuItem>
+                    </Menu>
+
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+
+        </Grid>
+
+        <!--</Border>-->
     </Grid>
 </Window>
