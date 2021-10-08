@@ -24,7 +24,7 @@
         <Grid Width="182" Grid.Column="0" Margin="114,344,4,13">
             <Popup Placement="Center" x:Name="Alarm_Popup" Margin="31,28,-31,-28" AllowsTransparency="True" PopupAnimation="Scroll">
                 <ScrollViewer  ScrollViewer.HorizontalScrollBarVisibility="Hidden"  Name="grd2">
-                    <DataGrid   FontSize="14" Height="200" Width="300" AutoGenerateColumns="False" x:Name="grd"  HeadersVisibility="Column">
+                    <DataGrid   FontSize="14" Height="200" Width="350" AutoGenerateColumns="False" x:Name="grd"  HeadersVisibility="Column">
                         <!--Font Color / Style of Column Headings-->
                         <DataGrid.Resources>
                             <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
@@ -37,7 +37,7 @@
                         </DataGrid.Resources>
                         <!--Column Header Text & Bindings-->
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Alarm" Binding="{Binding alarm}" Width="80">
+                            <DataGridTextColumn  Header="ID"    Binding="{Binding Alarm_Id}"  Width="25">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
@@ -47,6 +47,34 @@
                                                     <BeginStoryboard x:Name="brinkingRow">
                                                         <Storyboard>
                                                             <DoubleAnimation 
+                                        Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5" 
+                                        RepeatBehavior="Forever" AutoReverse="true"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+
+                                                </DataTrigger.EnterActions>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding seviye}" Value="MIDDLE">
+                                                <Setter Property="Background" Value="Yellow"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding seviye}" Value="LOW">
+                                                <Setter Property="Background" Value="LightBlue"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn Header="Alarm" Binding="{Binding alarm}" Width="100">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding seviye}" Value="HIGH">
+                                                <Setter Property="Background" Value="Yellow"/>
+                                                <DataTrigger.EnterActions>
+                                                    <BeginStoryboard x:Name="brinkingRow">
+                                                        <Storyboard>
+                                                            <DoubleAnimation
                                                                 Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5" 
                                                                 RepeatBehavior="Forever" AutoReverse="true"/>
                                                         </Storyboard>
@@ -63,8 +91,8 @@
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Seviye" Binding="{Binding seviye}" Width="80"/>
-                            <DataGridTextColumn Header="Saat" Binding="{Binding saat}" Width="*"/>
+                            <DataGridTextColumn Header="Level" Binding="{Binding seviye}" Width="100"/>
+                            <DataGridTextColumn Header="Date" Binding="{Binding saat}" Width="*"/>
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -87,9 +115,7 @@
                 <Button x:Name="button6" Background="#FF00A2FF" Content="STOP-2" Click="Stop_Click2" Width="120" Height="110"/>
                 <Button x:Name="button7" Background="#FF00A2FF" Content="STOP-3" Click="Stop_Click3" Width="120" Height="110"/>
 
-                <Border >
-                    <TextBlock x:Name="text1" FontSize="30" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="150" Height="35" />
-                </Border>
+
             </StackPanel>
 
         </Border>
@@ -105,6 +131,9 @@
                     <StackPanel>
                         <Border Grid.Row="0">
                             <Button Style="{StaticResource GlassButton}" Height="35" Width="80" Click="Reset_Click" Content="{DynamicResource Duraklat}" FontSize="14"/>
+                        </Border>
+                        <Border >
+                            <TextBlock x:Name="text1" FontSize="30" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" Width="150" Height="35" />
                         </Border>
                         <Menu FontSize="16" Height="25">
                         <Menu.Background>

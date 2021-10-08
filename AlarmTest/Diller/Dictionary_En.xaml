@@ -40,6 +40,7 @@ xmlns:system="clr-namespace:System;assembly=mscorlib">
     <system:String x:Key="Kirici_Akim_Ayar">Crusher Amper Setting</system:String>
 
     <system:String x:Key="Alarm_Id">Alarm Id</system:String>
+    <system:String x:Key="alarm1">Speed Sensor Fault</system:String>
 
     <system:String x:Key="Yetkiniz_yok">You are not authorized to do this operation.</system:String>
     <system:String x:Key="Log_report">Log Report</system:String>
