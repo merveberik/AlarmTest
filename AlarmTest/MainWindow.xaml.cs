@@ -28,6 +28,7 @@ namespace AlarmTest
         Alarm alarm = new Alarm();
         bool changeStatus1, changeStatus2, changeStatus3;
         Alarms alarmDeneme = new Alarms();
+        Alarms alarmDeneme1 = new Alarms();
         Alarms alarmDeneme2 = new Alarms();
         Alarms alarmDeneme3 = new Alarms();
         int counterStat = 0;
@@ -48,7 +49,7 @@ namespace AlarmTest
 
             timer1.IsEnabled = true;
             timer1.Tick += new EventHandler(timerCount);
-            timer1.Interval = TimeSpan.FromMilliseconds(1000);
+            timer1.Interval = TimeSpan.FromMilliseconds(500);
 
         }
         private void timerCount(object sender, EventArgs e)
@@ -67,18 +68,26 @@ namespace AlarmTest
                 grd.Visibility = Visibility.Hidden;
 
         }
-        int squadra;
 
 
         private void alarmi_datagride_yaz()
         {
-            if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == squadra))
+            if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == 1))
             {
             }
             else
             {
-                Alarms data = new Alarms { Alarm_Id = squadra, alarm = alarm_text, saat = DateTime.Now, seviye = alarm_seviye };
-                grd.Items.Add(data);
+                grd.Items.Add(alarmDeneme1);
+            }
+        }
+        private void alarmi_datagride_yaz2()
+        {
+            if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == 2))
+            {
+            }
+            else
+            {
+                grd.Items.Add(alarmDeneme2);
             }
         }
         private void alarmlar()
@@ -86,20 +95,28 @@ namespace AlarmTest
             if (alarm1 == true)
             {
 
-                squadra = 1;
-                alarm_text = this.Resources["1"].ToString();
-                alarm_seviye = "HIGH";
-                alarmDeneme.saat = DateTime.Now;
+                Alarm_Popup.IsOpen = true;
+                alarmDeneme1.Alarm_Id = 1;
+                alarmDeneme1.alarm = "hata1";
+                alarmDeneme1.seviye = "HIGH";
+                alarmDeneme1.saat = DateTime.Now;
+
                 alarmi_datagride_yaz();
             }
+        }
+        private void alarmlar2()
+        {
             if (alarm2 == true)
             {
 
-                squadra = 2;
-                alarm_text = this.Resources["2"].ToString();
-                alarm_seviye = "MIDDLE";
+                Alarm_Popup.IsOpen = true;
+                alarmDeneme2.Alarm_Id = 2;
+                alarmDeneme2.alarm = "Hız sensör Hata";
+                alarmDeneme2.seviye = "MIDDLE";
                 alarmDeneme2.saat = DateTime.Now;
-                alarmi_datagride_yaz();
+
+                alarmi_datagride_yaz2();
+
 
             }
         }
@@ -114,18 +131,16 @@ namespace AlarmTest
 
         private void Start_Click1(object sender, RoutedEventArgs e)
         {
-            changeStatus1 = true;
             alarm1 = true;
-            alarmlar();
             Alarm_Popup.IsOpen = true;
+            alarmlar();
         }
 
         private void Start_Click2(object sender, RoutedEventArgs e)
         {
-            Alarm_Popup.IsOpen = true;
-            changeStatus2 = true;
             alarm2 = true;
-            alarmlar();
+            Alarm_Popup.IsOpen = true;
+            alarmlar2();
 
         }
 
@@ -160,7 +175,7 @@ namespace AlarmTest
             {
                 if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == 1))
                 {
-                    grd.Items.Clear();
+                    grd.Items.Remove(alarmDeneme1);
                     //changeStatus3 = false;
                     //alarm_seviye = "HIGH";
 
@@ -171,7 +186,7 @@ namespace AlarmTest
             {
                 if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == 2))
                 {
-                    grd.Items.Clear();
+                    grd.Items.Remove(alarmDeneme2);
                     //alarm_seviye = "HIGH";
 
                 }
