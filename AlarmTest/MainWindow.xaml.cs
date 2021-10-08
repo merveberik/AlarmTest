@@ -31,10 +31,10 @@ namespace AlarmTest
         Alarms alarmDeneme2 = new Alarms();
         Alarms alarmDeneme3 = new Alarms();
         int counterStat = 0;
-        bool speed_hata1 = false;
+        bool alarm1 = false, alarm2 = false;
         string alarm_seviye;
         string alarm_text;
-
+        //string data;
         public MainWindow()
         {
             InitializeComponent();
@@ -50,12 +50,6 @@ namespace AlarmTest
             timer1.Tick += new EventHandler(timerCount);
             timer1.Interval = TimeSpan.FromMilliseconds(1000);
 
-            alarmDeneme.Alarm_Id = 2;
-            alarmDeneme.alarm = "alarm";
-
-            //System.Windows.MessageBox.Show(this.Resources["Hız sensör Hata"].ToString());
-            alarmDeneme.seviye = "HIGH";
-            alarmDeneme.saat = DateTime.Now;
         }
         private void timerCount(object sender, EventArgs e)
         {
@@ -73,30 +67,39 @@ namespace AlarmTest
                 grd.Visibility = Visibility.Hidden;
 
         }
+        int squadra;
+
 
         private void alarmi_datagride_yaz()
         {
-            if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == 2))
+            if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == squadra))
             {
             }
             else
             {
-                grd.Items.Add(alarmDeneme2);
+                Alarms data = new Alarms { Alarm_Id = squadra, alarm = alarm_text, saat = DateTime.Now, seviye = alarm_seviye };
+                grd.Items.Add(data);
             }
         }
         private void alarmlar()
         {
-            if (speed_hata1 == true)
+            if (alarm1 == true)
             {
 
-                Alarm_Popup.IsOpen = true;
-                alarmDeneme2.Alarm_Id = 2;
-                alarmDeneme2.alarm = "Hız sensör Hata";
-                alarmDeneme2.seviye = "MIDDLE";
-                alarmDeneme2.saat = DateTime.Now;
-
+                squadra = 1;
+                alarm_text = this.Resources["1"].ToString();
+                alarm_seviye = "HIGH";
+                alarmDeneme.saat = DateTime.Now;
                 alarmi_datagride_yaz();
+            }
+            if (alarm2 == true)
+            {
 
+                squadra = 2;
+                alarm_text = this.Resources["2"].ToString();
+                alarm_seviye = "MIDDLE";
+                alarmDeneme2.saat = DateTime.Now;
+                alarmi_datagride_yaz();
 
             }
         }
@@ -106,29 +109,24 @@ namespace AlarmTest
             public string alarm { get; set; }
             public string seviye { get; set; }
             public DateTime saat { get; set; }
-            public bool speed_hata { get; set; }
         }
 
 
         private void Start_Click1(object sender, RoutedEventArgs e)
         {
             changeStatus1 = true;
+            alarm1 = true;
+            alarmlar();
             Alarm_Popup.IsOpen = true;
-            grd.Items.Add(alarmDeneme);
-
         }
 
         private void Start_Click2(object sender, RoutedEventArgs e)
         {
-
+            Alarm_Popup.IsOpen = true;
             changeStatus2 = true;
-            speed_hata1 = true;
+            alarm2 = true;
             alarmlar();
-            //Alarm_Popup.IsOpen = true;
-            //alarmDeneme2.alarm = "CVY3 Hız sensör Hata";
-            //alarmDeneme2.seviye = "MIDDLE";
-            //alarmDeneme2.saat = DateTime.Now;
-            //grd.Items.Add(alarmDeneme2);
+
         }
 
         private void Start_Click3(object sender, RoutedEventArgs e)
@@ -143,12 +141,12 @@ namespace AlarmTest
 
         private void Stop_Click1(object sender, RoutedEventArgs e)
         {
-            changeStatus1 = false;
+            alarm1 = false;
         }
 
         private void Stop_Click2(object sender, RoutedEventArgs e)
         {
-            changeStatus2 = false;
+            alarm2 = false;
         }
 
         private void Stop_Click3(object sender, RoutedEventArgs e)
@@ -158,22 +156,43 @@ namespace AlarmTest
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
-            if (changeStatus1 == false)
+            if (alarm1 == false)
             {
-                counter = 0;
-                grd.Items.Remove(alarmDeneme);
+                if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == 1))
+                {
+                    grd.Items.Clear();
+                    //changeStatus3 = false;
+                    //alarm_seviye = "HIGH";
+
+                }
+
             }
-            if (changeStatus2 == false)
+            if (alarm2 == false)
             {
-                counter = 0;
-                grd.Items.Remove(alarmDeneme2);
+                if (grd.Items.Cast<Alarms>().Any(t => t.Alarm_Id == 2))
+                {
+                    grd.Items.Clear();
+                    //alarm_seviye = "HIGH";
+
+                }
+
             }
-            if (changeStatus3 == false)
-            {
-                counter = 0;
-                grd.Items.Remove(alarmDeneme3);
-            }
-            if (changeStatus1 == false & changeStatus2 == false & changeStatus3 == false)
+            //if (changeStatus1 == false)
+            //{
+            //    counter = 0;
+            //    grd.Items.Clear();
+            //}
+            //if (changeStatus2 == false)
+            //{
+            //    counter = 0;
+            //    grd.Items.Clear();
+            //}
+            //if (changeStatus3 == false)
+            //{
+            //    counter = 0;
+            //    grd.Items.Remove(alarmDeneme3);
+            //}
+            if (alarm1 == false & alarm2 == false)
             {
                 Alarm_Popup.IsOpen = false;
             }
