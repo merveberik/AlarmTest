@@ -26,20 +26,19 @@ namespace AlarmTest
         DispatcherTimer timer1 = new DispatcherTimer();
 
         Alarm alarm = new Alarm();
-        bool changeStatus1, changeStatus2, changeStatus3;
+        bool changeStatus1, changeStatus2, changeStatus3, changeStatus;
         Alarms alarmDeneme = new Alarms();
         Alarms alarmDeneme1 = new Alarms();
         Alarms alarmDeneme2 = new Alarms();
         Alarms alarmDeneme3 = new Alarms();
         int counterStat = 0;
         bool alarm1 = false, alarm2 = false;
-        string alarm_seviye;
-        string alarm_text;
+
         //string data;
         public MainWindow()
         {
             InitializeComponent();
-            changeStatus1 = false;
+            changeStatus = false;
             changeStatus2 = false;
             changeStatus3 = false;
             //var timer = new System.Timers.Timer();
@@ -49,7 +48,7 @@ namespace AlarmTest
 
             timer1.IsEnabled = true;
             timer1.Tick += new EventHandler(timerCount);
-            timer1.Interval = TimeSpan.FromMilliseconds(500);
+            timer1.Interval = TimeSpan.FromMilliseconds(1000);
 
         }
         private void timerCount(object sender, EventArgs e)
@@ -58,17 +57,15 @@ namespace AlarmTest
             counterStat = 1;
             text1.Text = counter.ToString();
             if (grd.Items.Count > 0)
-            {
+                grd2.Visibility = Visibility.Visible;
 
-                grd.Visibility = Visibility.Visible;
+            else
+            {
+                grd2.Visibility = Visibility.Hidden;
 
             }
 
-            else
-                grd.Visibility = Visibility.Hidden;
-
         }
-
 
         private void alarmi_datagride_yaz()
         {
@@ -78,6 +75,7 @@ namespace AlarmTest
             else
             {
                 grd.Items.Add(alarmDeneme1);
+
             }
         }
         private void alarmi_datagride_yaz2()
@@ -94,10 +92,9 @@ namespace AlarmTest
         {
             if (alarm1 == true)
             {
-
                 Alarm_Popup.IsOpen = true;
                 alarmDeneme1.Alarm_Id = 1;
-                alarmDeneme1.alarm = "hata1";
+                alarmDeneme1.alarm = this.Resources["2"].ToString();
                 alarmDeneme1.seviye = "HIGH";
                 alarmDeneme1.saat = DateTime.Now;
 
@@ -111,13 +108,27 @@ namespace AlarmTest
 
                 Alarm_Popup.IsOpen = true;
                 alarmDeneme2.Alarm_Id = 2;
-                alarmDeneme2.alarm = "Hız sensör Hata";
+                alarmDeneme2.alarm = this.Resources["15"].ToString();
                 alarmDeneme2.seviye = "MIDDLE";
                 alarmDeneme2.saat = DateTime.Now;
 
                 alarmi_datagride_yaz2();
 
-
+            }
+        }
+        private void alarm_dil_degistirme()
+        {
+            if (grd.Items.Count > 0)
+            {
+                grd.Items.Clear();
+                if (alarm1 == true)
+                {
+                    alarmlar();
+                }
+                if (alarm2 == true)
+                {
+                    alarmlar2();
+                }
             }
         }
         public class Alarms
@@ -132,14 +143,14 @@ namespace AlarmTest
         private void Start_Click1(object sender, RoutedEventArgs e)
         {
             alarm1 = true;
-            Alarm_Popup.IsOpen = true;
+            //Alarm_Popup.IsOpen = true;
             alarmlar();
         }
 
         private void Start_Click2(object sender, RoutedEventArgs e)
         {
             alarm2 = true;
-            Alarm_Popup.IsOpen = true;
+            //Alarm_Popup.IsOpen = true;
             alarmlar2();
 
         }
@@ -212,24 +223,37 @@ namespace AlarmTest
                 Alarm_Popup.IsOpen = false;
             }
         }
+
         private void SetLanguageDictionary()
         {
 
             ResourceDictionary dict = new ResourceDictionary();
-
-
-            if (Properties.Settings.Default.dil_secimi == "tr")
+            changeStatus = true;
+            switch (Thread.CurrentThread.CurrentCulture.ToString())
             {
-                dict.Source = new Uri("..\\Diller\\Dictionary_Tr.xaml", UriKind.Relative);
+                case "tr":
+                    dict.Source = new Uri("..\\Diller\\Dictionary_Tr.xaml", UriKind.Relative);
 
+                    break;
+
+                case "en":
+                    dict.Source = new Uri("..\\Diller\\Dictionary_En.xaml", UriKind.Relative);
+
+                    break;
+
+                default:
+                    if (Properties.Settings.Default.dil_secimi == "tr")
+                    {
+                        dict.Source = new Uri("..\\Diller\\Dictionary_Tr.xaml", UriKind.Relative);
+
+                    }
+
+                    if (Properties.Settings.Default.dil_secimi == "en")
+                    {
+                        dict.Source = new Uri("..\\Diller\\Dictionary_En.xaml", UriKind.Relative);
+                    }
+                    break;
             }
-
-            if (Properties.Settings.Default.dil_secimi == "en")
-            {
-                dict.Source = new Uri("..\\Diller\\Dictionary_En.xaml", UriKind.Relative);
-            }
-
-
             this.Resources.MergedDictionaries.Add(dict);
         }
 
@@ -240,6 +264,7 @@ namespace AlarmTest
             System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("tr");
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             SetLanguageDictionary();
+            alarm_dil_degistirme();
         }
 
         private void en_Click(object sender, RoutedEventArgs e)
@@ -249,6 +274,7 @@ namespace AlarmTest
             System.Globalization.CultureInfo cultureInfo = new System.Globalization.CultureInfo("en");
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             SetLanguageDictionary();
+            alarm_dil_degistirme();
         }
     }
 }

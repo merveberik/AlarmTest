@@ -110,5 +110,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="buttons\on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="buttons\off.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

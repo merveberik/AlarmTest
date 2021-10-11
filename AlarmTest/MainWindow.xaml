@@ -24,7 +24,7 @@
         <Grid Width="182" Grid.Column="0" Margin="114,344,4,13">
             <Popup Placement="Center" x:Name="Alarm_Popup" Margin="31,28,-31,-28" AllowsTransparency="True" PopupAnimation="Scroll">
                 <ScrollViewer  ScrollViewer.HorizontalScrollBarVisibility="Hidden"  Name="grd2">
-                    <DataGrid   FontSize="14" Height="200" Width="350" AutoGenerateColumns="False" x:Name="grd"  HeadersVisibility="Column">
+                    <DataGrid   FontSize="14" Height="200" Width="385" AutoGenerateColumns="False" x:Name="grd"  HeadersVisibility="Column">
                         <!--Font Color / Style of Column Headings-->
                         <DataGrid.Resources>
                             <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
@@ -65,7 +65,7 @@
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Alarm" Binding="{Binding alarm}" Width="100">
+                            <DataGridTextColumn Header="Alarm" Binding="{Binding alarm}" Width="150">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="{x:Type TextBlock}">
                                         <Style.Triggers>
