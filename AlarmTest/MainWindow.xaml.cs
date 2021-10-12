@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading;
 using System.Windows.Threading;
+using System.Data.SqlClient;
 
 namespace AlarmTest
 {
@@ -23,6 +24,7 @@ namespace AlarmTest
     public partial class MainWindow : Window
     {
         int counter = 0, counter2 = 0;
+        static sqlConnection newconnection = new sqlConnection();
         DispatcherTimer timer1 = new DispatcherTimer();
 
         Alarm alarm = new Alarm();
@@ -49,7 +51,7 @@ namespace AlarmTest
             timer1.IsEnabled = true;
             timer1.Tick += new EventHandler(timerCount);
             timer1.Interval = TimeSpan.FromMilliseconds(1000);
-
+            
         }
         private void timerCount(object sender, EventArgs e)
         {
@@ -93,7 +95,7 @@ namespace AlarmTest
             if (alarm1 == true)
             {
                 Alarm_Popup.IsOpen = true;
-                alarmDeneme1.Alarm_Id = 1;
+                alarmDeneme1.Alarm_Id = 2;
                 alarmDeneme1.alarm = this.Resources["2"].ToString();
                 alarmDeneme1.seviye = "HIGH";
                 alarmDeneme1.saat = DateTime.Now;
@@ -139,12 +141,31 @@ namespace AlarmTest
             public DateTime saat { get; set; }
         }
 
+        private void alarm_kaydet()
+        {
+            try
+            {
+                SqlCommand kaydet = new SqlCommand("insert into Alarm (AlarmId, AlarmAdi, AlarmLevel, AlarmTarihi) values(@AlarmId, @AlarmAdi, @AlarmLevel, @AlarmTarihi)", newconnection.baglan());
+                kaydet.Parameters.AddWithValue("@AlarmId", alarmDeneme1.Alarm_Id);
+                kaydet.Parameters.AddWithValue("@AlarmAdi", alarmDeneme1.alarm);
+                kaydet.Parameters.AddWithValue("@AlarmTarihi", DateTime.Now);
+                kaydet.Parameters.AddWithValue("@AlarmLevel", alarmDeneme1.seviye);
+                kaydet.ExecuteNonQuery();
+                newconnection.baglan_close();
+                MessageBox.Show("Eklendi.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hata var" + ex.Message);
+            }
+        }
 
         private void Start_Click1(object sender, RoutedEventArgs e)
         {
             alarm1 = true;
             //Alarm_Popup.IsOpen = true;
             alarmlar();
+            alarm_kaydet();
         }
 
         private void Start_Click2(object sender, RoutedEventArgs e)

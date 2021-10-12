@@ -34,5 +34,16 @@ namespace AlarmTest.Properties {
                 this["dil_secimi"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-849ONI1\\SQLEXPRESS;Initial Catalog=MekaLevyDB;Integrated Secu" +
+            "rity=True")]
+        public string MekaLevyDBConnectionString {
+            get {
+                return ((string)(this["MekaLevyDBConnectionString"]));
+            }
+        }
     }
 }
